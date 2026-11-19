@@ -1,0 +1,287 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   BIET Campus — Variation 2 (TCU-Inspired Editorial Design System)
+   Exact BIET Yellow / Charcoal / White Semantic Design Tokens
+   ========================================================================== */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --color-biet-yellow: #FFCC00;
+  --color-biet-yellow-hover: #E6B800;
+  --color-biet-yellow-pale: #FFF0B3;
+  --color-biet-charcoal: #111111;
+  --color-biet-dark: #1A1A1A;
+  --color-biet-deep: #0A0A0A;
+  --color-biet-muted: #666666;
+  --color-biet-surface: #F4F4F5;
+  --color-biet-border-light: #E2E2E6;
+  --color-biet-border-dark: #262626;
+  --color-biet-white: #FFFFFF;
+}
+
+:root {
+  /* Colours */
+  --biet-yellow: #FFCC00;
+  --biet-yellow-hover: #E6B800;
+  --biet-yellow-pale: #FFF0B3;
+  --biet-charcoal: #111111;
+  --biet-dark: #1A1A1A;
+  --biet-deep: #0A0A0A;
+  --biet-muted: #666666;
+  --biet-surface: #F4F4F5;
+  --biet-border-light: #E2E2E6;
+  --biet-border-dark: #262626;
+  --biet-white: #FFFFFF;
+  --biet-error: #B91C1C;
+  --biet-success: #15803D;
+  --biet-warning: #A16207;
+
+  /* Layout & Spacing */
+  --biet-max-width: 1280px;
+  --biet-header-h-mobile: 68px;
+  --biet-header-h-desktop: 80px;
+  --biet-actionbar-h: 72px;
+
+  /* Z-index layers */
+  --z-header: 40;
+  --z-action-bar: 45;
+  --z-menu: 50;
+  --z-dialog: 60;
+  --z-alert: 70;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-hover: 180ms;
+  --dur-menu: 280ms;
+  --dur-reveal: 550ms;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--biet-charcoal);
+    background-color: var(--biet-white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--biet-yellow);
+    color: var(--biet-charcoal);
+  }
+
+  /* High-contrast accessible focus ring on light, dark, and yellow surfaces */
+  :focus-visible {
+    outline: 3px solid var(--biet-yellow);
+    outline-offset: 3px;
+  }
+
+  .surface-light :focus-visible,
+  .surface-yellow :focus-visible {
+    outline: 3px solid var(--biet-charcoal);
+    outline-offset: 3px;
+  }
+}
+
+/* ==========================================================================
+   Typography Targets (Fluid CSS)
+   ========================================================================== */
+.display-hero {
+  font-size: clamp(2.5rem, 6.2vw, 7.25rem); /* 40px -> 116px */
+  font-weight: 800;
+  line-height: 0.99;
+  letter-spacing: -0.03em;
+}
+
+.display-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--biet-yellow);
+  text-shadow: none;
+}
+
+@media (max-width: 639px) {
+  .display-outline {
+    -webkit-text-stroke: 1.5px var(--biet-yellow);
+  }
+}
+
+@supports not (-webkit-text-stroke: 2px #FFCC00) {
+  .display-outline {
+    color: var(--biet-yellow);
+  }
+}
+
+.heading-section {
+  font-size: clamp(1.875rem, 3.6vw, 3.75rem); /* 30px -> 60px */
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.heading-card {
+  font-size: clamp(1.35rem, 2vw, 1.85rem); /* ~22px -> ~30px */
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* ==========================================================================
+   Selective Diagonal Accents (strictly bounded per Section 04 Art Direction)
+   - Never skews readable text, form fields, focus rings, or interactive cards
+   ========================================================================== */
+.diagonal-hero-exit {
+  height: 56px;
+  background: var(--biet-white);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+@media (max-width: 767px) {
+  .diagonal-hero-exit {
+    height: 24px;
+    clip-path: none;
+  }
+}
+
+.diagonal-accent-rule {
+  width: 64px;
+  height: 6px;
+  background-color: var(--biet-yellow);
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.diagonal-media-crop {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%);
+}
+
+.tcu-search-panel {
+  background-color: #F4F4F5;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 44px) 100%, 0 100%);
+}
+
+.tcu-go-btn {
+  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+.tcu-diagonal-photo-left {
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (max-width: 767px) {
+  .diagonal-media-crop,
+  .tcu-search-panel,
+  .tcu-go-btn,
+  .tcu-diagonal-photo-left {
+    clip-path: none;
+  }
+}
+
+/* ==========================================================================
+   Component Primitives (Rectangular geometry, 4px corners, 48-52px buttons)
+   ========================================================================== */
+.biet-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding: 0 1.5rem;
+  background-color: var(--biet-yellow);
+  color: var(--biet-charcoal);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border-radius: 4px;
+  border: 2px solid var(--biet-yellow);
+  transition:
+    background-color var(--dur-hover) var(--ease-editorial),
+    border-color var(--dur-hover) var(--ease-editorial),
+    transform var(--dur-hover) var(--ease-editorial);
+  cursor: pointer;
+}
+
+.biet-btn-primary:hover {
+  background-color: var(--biet-yellow-hover);
+  border-color: var(--biet-yellow-hover);
+  transform: translateY(-2px);
+}
+
+.biet-btn-secondary-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding: 0 1.5rem;
+  background-color: transparent;
+  color: var(--biet-white);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border-radius: 4px;
+  border: 2px solid var(--biet-white);
+  transition:
+    background-color var(--dur-hover) var(--ease-editorial),
+    color var(--dur-hover) var(--ease-editorial),
+    border-color var(--dur-hover) var(--ease-editorial);
+  cursor: pointer;
+}
+
+.biet-btn-secondary-dark:hover {
+  background-color: var(--biet-white);
+  color: var(--biet-charcoal);
+}
+
+.biet-btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding: 0 1.5rem;
+  background-color: transparent;
+  color: var(--biet-charcoal);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border-radius: 4px;
+  border: 2px solid var(--biet-charcoal);
+  transition:
+    background-color var(--dur-hover) var(--ease-editorial),
+    color var(--dur-hover) var(--ease-editorial);
+  cursor: pointer;
+}
+
+.biet-btn-secondary-light:hover {
+  background-color: var(--biet-charcoal);
+  color: var(--biet-white);
+}
+
+/* Reserved bottom padding for persistent recruitment ActionBar */
+.pb-actionbar-safe {
+  padding-bottom: calc(var(--biet-actionbar-h) + env(safe-area-inset-bottom, 0px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .diagonal-hero-exit,
+  .diagonal-media-crop {
+    clip-path: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

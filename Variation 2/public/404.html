@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting — BIET Campus</title>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var base = path.indexOf('/BIET-NEW') === 0 ? '/BIET-NEW/' : '/';
+        var rel = path.slice(base.length);
+        try {
+          sessionStorage.setItem('biet_spa_redirect', rel + window.location.search + window.location.hash);
+        } catch (e) {}
+        window.location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

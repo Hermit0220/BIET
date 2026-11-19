@@ -1,0 +1,3780 @@
+import { photo } from '../lib/assets';
+
+export interface ModuleItem {
+  code: string;
+  name: string;
+  credits: number;
+  description: string;
+}
+
+export interface StructureYear {
+  yearTitle: string;
+  level: string;
+  credits: number;
+  description: string;
+  modules: ModuleItem[];
+}
+
+export interface AllModuleRow {
+  no: number;
+  code?: string;
+  title: string;
+  credits?: number;
+  creditsDisplay?: string;
+  semester?: string;
+  moduleType?: string;
+  academicYear?: string;
+}
+
+export interface GalleryImage {
+  url: string;
+  caption: string;
+  category: string;
+}
+
+export type ImageSvgType =
+  | 'civil'
+  | 'mechanical'
+  | 'electrical'
+  | 'software'
+  | 'cyber'
+  | 'quantity-surveying';
+
+export interface Programme {
+  id: string;
+  title: string;
+  category: 'engineering' | 'computing' | 'built-environment';
+  school: string;
+  qualification: string;
+  affiliatedInstitution?: string;
+  awardingBodyPlaceholder: string;
+  duration: string;
+  studyMode: string;
+  studySchedule?: string;
+  intakes: string[];
+  nextIntakeHighlight?: string;
+  imageSvgType: ImageSvgType;
+  imageUrl?: string;
+  heroImageUrl?: string;
+  sampleBadgeNote: string;
+  totalCredits?: string;
+  moduleCount?: number;
+  assessmentMethod?: string;
+  assessmentNote?: string;
+  overview: string;
+  progressionOpportunities?: string[];
+  whatYouWillLearn: string[];
+  allModules?: AllModuleRow[];
+  coreModulesYear1: string[];
+  coreModulesYear2: string[];
+  coreModulesYear3: string[];
+  structureBreakdown?: StructureYear[];
+  entryRequirements: string[];
+  careerPathways: string[];
+  industrySectors: string[];
+  laboratories: string[];
+  galleryImages?: GalleryImage[];
+}
+
+export const PROGRAMMES: Programme[] = [
+  {
+    "id": "civil-engineering",
+    "title": "Civil & Structural Engineering",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons) / HND Pathway",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time / 4 Years Part-Time",
+    "studyMode": "Full-Time / Part-Time (Weekend & Evening)",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "civil",
+    "imageUrl": photo('photo-1504307651254-35680f356dfd'),
+    "heroImageUrl": photo('photo-1590486803833-1c5dc8ddd4c8'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "An intensive, mathematically grounded engineering curriculum focusing on structural mechanics, geotechnical investigations, coastal and water resources, sustainable construction materials, and major infrastructural planning aligned with British engineering benchmarks.",
+    "whatYouWillLearn": [
+      "Analyse structural stress, shear forces, and bending moments across reinforced concrete, timber, and structural steel.",
+      "Conduct soil mechanics evaluations, slope stability analyses, and deep foundation engineering designs.",
+      "Utilize Building Information Modelling (BIM) and computer-aided structural design suites (AutoCAD, Revit, STAAD Pro).",
+      "Manage health and safety compliance, site environmental impact assessments, and international contract procedures (FIDIC).",
+      "Formulate disaster-resilient civil engineering solutions adapted to maritime and tropical geotechnical conditions in South Asia."
+    ],
+    "coreModulesYear1": [
+      "Engineering Mathematics & Numerical Computation",
+      "Structural Mechanics & Statics",
+      "Civil Engineering Materials & Testing",
+      "Engineering Surveying & CAD Modelling"
+    ],
+    "coreModulesYear2": [
+      "Hydraulics & Fluid Mechanics",
+      "Soil Mechanics & Geotechnics",
+      "Structural Analysis & Steel Design",
+      "Concrete Technology & Reinforced Design"
+    ],
+    "coreModulesYear3": [
+      "Advanced Structural Dynamics & Earthquake Resistance",
+      "Environmental Engineering & Water Resources",
+      "Construction Project Management & Safety Protocols",
+      "Individual Capstone Engineering Design Thesis"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Foundation Engineering & Mathematics",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Establishes fundamental scientific rigor in applied calculus, statics, materials science, and geodetic site measurement.",
+        "modules": [
+          {
+            "code": "CIV101",
+            "name": "Engineering Mathematics & Linear Algebra",
+            "credits": 20,
+            "description": "Differential equations, matrix operations, and vector calculus applied to structural physical systems."
+          },
+          {
+            "code": "CIV102",
+            "name": "Structural Statics & Material Strength",
+            "credits": 20,
+            "description": "Equilibrium equations, stress-strain relationships, axial load behavior, and beam deflection theory."
+          },
+          {
+            "code": "CIV103",
+            "name": "Materials Science & Concrete Testing",
+            "credits": 20,
+            "description": "Physical testing of aggregates, cements, tensile steel bar properties, and sustainable composite mixes."
+          },
+          {
+            "code": "CIV104",
+            "name": "Engineering Surveying & Digital Geomatics",
+            "credits": 20,
+            "description": "Total station operation, leveling networks, GPS coordinate transformation, and terrain topography mapping."
+          },
+          {
+            "code": "CIV105",
+            "name": "CAD & Technical Drafting Protocols",
+            "credits": 20,
+            "description": "2D drafting and 3D geometric modeling adhering to BS EN ISO construction documentation standards."
+          },
+          {
+            "code": "CIV106",
+            "name": "Fluid Mechanics & Hydrostatics",
+            "credits": 20,
+            "description": "Fluid properties, hydrostatic pressure distributions, buoyancy, and flow measurement through flumes."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Intermediate Structural & Geotechnical Systems",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "Focuses on indeterminate structural analysis, geotechnical soil mechanics, hydraulics, and reinforced concrete design codes.",
+        "modules": [
+          {
+            "code": "CIV201",
+            "name": "Indeterminate Structural Analysis",
+            "credits": 20,
+            "description": "Moment distribution methods, stiffness matrices, virtual work energy principles, and frame behavior."
+          },
+          {
+            "code": "CIV202",
+            "name": "Soil Mechanics & Geotechnical Testing",
+            "credits": 20,
+            "description": "Soil classification, shear strength parameters, triaxial testing, consolidation, and lateral earth pressures."
+          },
+          {
+            "code": "CIV203",
+            "name": "Reinforced Concrete Design (Eurocode 2)",
+            "credits": 20,
+            "description": "Limit state design of beams, suspended slabs, short and slender columns, and retaining elements."
+          },
+          {
+            "code": "CIV204",
+            "name": "Structural Steelwork Design (Eurocode 3)",
+            "credits": 20,
+            "description": "Tension and compression members, beam-column connections, bolting and welding detailing standards."
+          },
+          {
+            "code": "CIV205",
+            "name": "Open Channel Hydraulics & Hydrology",
+            "credits": 20,
+            "description": "Catchment runoff modeling, flood risk calculation, pipe networks, and hydraulic jump energy dissipation."
+          },
+          {
+            "code": "CIV206",
+            "name": "Geotechnical Foundation Engineering",
+            "credits": 20,
+            "description": "Shallow footings bearing capacity, pile group design, settlement prediction, and ground improvement techniques."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Advanced Engineering & Capstone Thesis",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Culminates in an independent experimental or analytical capstone thesis, seismic design, and commercial infrastructure leadership.",
+        "modules": [
+          {
+            "code": "CIV301",
+            "name": "Individual Engineering Capstone Thesis",
+            "credits": 40,
+            "description": "Substantial individual research or design investigation conducted under chartered academic supervision."
+          },
+          {
+            "code": "CIV302",
+            "name": "Advanced Structural Dynamics & Earthquake Design",
+            "credits": 20,
+            "description": "Multi-degree-of-freedom systems, response spectrum analysis, vibration damping, and seismic code compliance."
+          },
+          {
+            "code": "CIV303",
+            "name": "Water Resources & Coastal Engineering",
+            "credits": 20,
+            "description": "Wave mechanics, coastal defenses, breakwater design, and municipal water treatment infrastructure."
+          },
+          {
+            "code": "CIV304",
+            "name": "Infrastructure Project Management & Contract Law",
+            "credits": 20,
+            "description": "Critical path scheduling, FIDIC contract conditions, health & safety management systems (ISO 45001)."
+          },
+          {
+            "code": "CIV305",
+            "name": "Sustainable Infrastructure & Life-Cycle Assessment",
+            "credits": 20,
+            "description": "Embodied carbon calculation, circular construction methodologies, and climate resilience frameworks."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Minimum 2 Passes at Sri Lankan G.C.E. Advanced Level (A/L) in Combined Mathematics & Physics, OR",
+      "Minimum 2 Passes at Cambridge / Edexcel International A-Levels in Mathematics and Physics / Chemistry (Grade D or above), OR",
+      "Recognized Engineering Foundation Diploma [Accreditation / Entry Benchmark Placeholder] with minimum GPA 2.5.",
+      "Credit pass for Mathematics and Ordinary Level (O/L) English proficiency."
+    ],
+    "careerPathways": [
+      "Chartered Structural Design Engineer",
+      "Major Infrastructure Project Manager",
+      "Geotechnical & Foundation Consultant",
+      "Site Engineering Director",
+      "Water Resources & Coastal Engineer"
+    ],
+    "industrySectors": [
+      "High-Rise Commercial Construction",
+      "Highways, Bridges & Transportation Authorities",
+      "Coastal Mitigation & Port Infrastructure",
+      "Structural Engineering Consultancies"
+    ],
+    "laboratories": [
+      "Heavy Structures & Universal Tensile Testing Lab",
+      "Soil Mechanics & Triaxial Geotechnical Facility",
+      "Fluid Mechanics & Flume Flow Observation Suite",
+      "BIM & Computational Structural Simulation Studio"
+    ]
+  },
+  {
+    "id": "mechanical-engineering",
+    "title": "Mechanical & Manufacturing Engineering",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons) / HND Pathway",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time / 4 Years Part-Time",
+    "studyMode": "Full-Time / Part-Time (Weekend)",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "mechanical",
+    "imageUrl": photo('photo-1581092162384-8987c1d64718'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "A multidisciplinary engineering qualification bridging thermodynamics, fluid mechanics, mechatronics automation, machine design, and high-precision CNC manufacturing aligned with modern industrial automation demands.",
+    "whatYouWillLearn": [
+      "Formulate thermodynamic cycles, heat exchanger performance, and industrial refrigeration systems.",
+      "Design mechanical components, gear trains, shafts, and linkages subjected to static and cyclic fatigue loading.",
+      "Program industrial CNC machining centers, robotic arms, and programmable logic controllers (PLCs).",
+      "Perform Finite Element Analysis (FEA) and Computational Fluid Dynamics (CFD) using commercial software.",
+      "Implement quality engineering frameworks, Lean manufacturing philosophies, and Six Sigma tolerances."
+    ],
+    "coreModulesYear1": [
+      "Principles of Engineering Thermodynamics",
+      "Mechanical Materials & Science",
+      "Solid Mechanics & Dynamics",
+      "Computer-Aided Mechanical Design (SolidWorks/AutoCAD)"
+    ],
+    "coreModulesYear2": [
+      "Thermo-Fluids & Heat Transfer Systems",
+      "Control Systems & Instrumentation",
+      "Manufacturing Processes & CNC Machining",
+      "Machine Element Design & Stress Analysis"
+    ],
+    "coreModulesYear3": [
+      "Robotics, Mechatronics & Automation Systems",
+      "Computational Fluid Dynamics (CFD)",
+      "Renewable Energy & Sustainable Power Generation",
+      "Senior Engineering Capstone Innovation Project"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Mechanics, Materials & CAD Fundamentals",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Foundational mathematics, mechanics of solids, thermodynamics laws, and digital engineering drawing.",
+        "modules": [
+          {
+            "code": "MEC101",
+            "name": "Applied Mathematics for Mechanical Systems",
+            "credits": 20,
+            "description": "Calculus, complex variables, and differential modelling for dynamic mechanical systems."
+          },
+          {
+            "code": "MEC102",
+            "name": "Thermodynamics & Energy Conversion",
+            "credits": 20,
+            "description": "First and second laws of thermodynamics, ideal gas laws, steam tables, and refrigeration cycles."
+          },
+          {
+            "code": "MEC103",
+            "name": "Engineering Dynamics & Kinematics",
+            "credits": 20,
+            "description": "Planar kinematics of rigid bodies, Newton’s laws, impulse, momentum, and mechanical vibrations."
+          },
+          {
+            "code": "MEC104",
+            "name": "SolidWorks 3D Modeling & Geometric Tolerancing",
+            "credits": 20,
+            "description": "Parametric solid modeling, assembly constraints, and GD&T standard manufacturing drawings."
+          },
+          {
+            "code": "MEC105",
+            "name": "Engineering Materials & Failure Mechanisms",
+            "credits": 20,
+            "description": "Ferrous/non-ferrous metallurgy, crystal lattice defects, fatigue, creep, and brittle fracture."
+          },
+          {
+            "code": "MEC106",
+            "name": "Workshop Machining & Metrology Practice",
+            "credits": 20,
+            "description": "Manual turning, milling, micrometer calibration, vernier inspection, and workshop safety."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Thermo-Fluids, Control Systems & CNC",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "Advanced heat transfer, dynamic control systems, computer-numerical control, and machine component sizing.",
+        "modules": [
+          {
+            "code": "MEC201",
+            "name": "Heat Transfer & Thermal Exchangers",
+            "credits": 20,
+            "description": "Conduction, convection boundary layers, radiant heat transfer, and shell-and-tube exchanger design."
+          },
+          {
+            "code": "MEC202",
+            "name": "Machine Element Design & Fatigue",
+            "credits": 20,
+            "description": "Helical gears, roller bearings, hydrodynamic lubrication, drive shafts, and spring sizing."
+          },
+          {
+            "code": "MEC203",
+            "name": "Control Theory & PLC Programming",
+            "credits": 20,
+            "description": "Feedback loop stability, PID controller tuning, ladder logic programming, and sensors."
+          },
+          {
+            "code": "MEC204",
+            "name": "Advanced CNC Machining & Tooling",
+            "credits": 20,
+            "description": "G-code programming, CAM toolpath simulation, multi-axis machining, and cutting tool wear."
+          },
+          {
+            "code": "MEC205",
+            "name": "Fluid Mechanics & Turbomachinery",
+            "credits": 20,
+            "description": "Centrifugal pumps, Pelton/Francis water turbines, boundary layer flow, and cavitation."
+          },
+          {
+            "code": "MEC206",
+            "name": "Finite Element Analysis (FEA)",
+            "credits": 20,
+            "description": "Discretization, meshing strategies, boundary conditions, and stress concentrations via ANSYS."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Mechatronics, CFD & Senior Capstone",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Independent capstone research thesis, computational fluid dynamics, robotics, and clean energy systems.",
+        "modules": [
+          {
+            "code": "MEC301",
+            "name": "Mechanical Capstone Engineering Thesis",
+            "credits": 40,
+            "description": "Independent hardware prototype development or simulation investigation under academic mentorship."
+          },
+          {
+            "code": "MEC302",
+            "name": "Robotics, Mechatronics & Vision Systems",
+            "credits": 20,
+            "description": "Inverse kinematics, stepper/servo actuators, microcontroller integration, and machine vision inspection."
+          },
+          {
+            "code": "MEC303",
+            "name": "Computational Fluid Dynamics (CFD)",
+            "credits": 20,
+            "description": "Navier-Stokes discretization, turbulence models (k-epsilon), and aerodynamic drag simulation."
+          },
+          {
+            "code": "MEC304",
+            "name": "Renewable Power & Sustainable Energy",
+            "credits": 20,
+            "description": "Wind turbine blade aerodynamics, solar thermal generation, biomass combustion, and efficiency auditing."
+          },
+          {
+            "code": "MEC305",
+            "name": "Manufacturing Operations & Quality Management",
+            "credits": 20,
+            "description": "Lean Six Sigma, supply chain coordination, ISO 9001 quality audits, and engineering economics."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Minimum 2 Passes at Sri Lankan G.C.E. A/L in Combined Mathematics and Physics, OR",
+      "Equivalent Cambridge / Edexcel International A-Level in Mathematics and Physics, OR",
+      "Approved Engineering Foundation Diploma [Accreditation / Entry Benchmark Placeholder].",
+      "Ordinary Level credit in Mathematics and English."
+    ],
+    "careerPathways": [
+      "Mechanical Systems Design Engineer",
+      "Industrial Automation & Robotics Specialist",
+      "HVAC & Building Services Consultant",
+      "Aerospace & Automotive Engineering Specialist",
+      "Precision Production Plant Manager"
+    ],
+    "industrySectors": [
+      "Automotive & Precision Manufacturing",
+      "Aviation & Aerospace Maintenance",
+      "Renewable Energy & Power Generation",
+      "Pharmaceutical & Food Packaging Automation"
+    ],
+    "laboratories": [
+      "CNC Machining & Precision Turning Studio",
+      "Thermo-Fluids, Heat Transfer & Engine Test Station",
+      "Mechatronics, Robotics & PLC Automation Cell",
+      "Materials Strength & Metallurgical Microscope Lab"
+    ]
+  },
+  {
+    "id": "hndme",
+    "title": "Higher National Diploma in Mechanical Engineering (HNDME)",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "Higher National Diploma (HND)",
+    "awardingBodyPlaceholder": "British Institute of Engineering & Technology (BIET)",
+    "duration": "18 months",
+    "studyMode": "Full-Time / Part-Time",
+    "intakes": [
+      "5 March 2027",
+      "5 September 2027"
+    ],
+    "imageSvgType": "mechanical",
+    "imageUrl": photo('photo-1537462715879-360eeb61a0ad'),
+    "heroImageUrl": photo('photo-1581092446327-9b52bd1570c2'),
+    "sampleBadgeNote": "",
+    "totalCredits": "240 UK credits / 60 Local Credits",
+    "moduleCount": 12,
+    "assessmentMethod": "Coursework",
+    "overview": "The Higher National Diploma in Mechanical Engineering (HNDME) at the British Institute of Engineering & Technology (BIET) is a rigorous 18-month programme delivering practical and analytical mastery in engineering mechanics, thermodynamics, fluid dynamics, materials science, CAD/CAM design, mechatronics, and manufacturing systems.",
+    "progressionOpportunities": [
+      "Top-up degrees and career pathways",
+      "Direct pathway to final year Bachelor (BEng / BSc) degree top-up programmes",
+      "Professional engineering careers across aerospace, automotive, manufacturing, and mechatronics sectors"
+    ],
+    "entryRequirements": [
+      "Foundation or 3 A/L passes in Science/Technology or any related field"
+    ],
+    "whatYouWillLearn": [
+      "Apply foundational and advanced engineering mathematics to complex mechanical systems.",
+      "Analyse statics, dynamics, and structural mechanics of engineering machinery.",
+      "Formulate thermodynamic cycles, heat transfer mechanisms, and energy conversion systems.",
+      "Evaluate material properties, metallurgy, and advanced manufacturing processes.",
+      "Perform fluid dynamics modeling, hydraulic analysis, and pipe flow calculations.",
+      "Design 3D mechanical components, assemblies, and toolpaths using industry-standard CAD/CAM suites.",
+      "Integrate mechatronics, sensor interfaces, and automated industrial control systems.",
+      "Execute engineering project management principles and collaborate on a comprehensive group project."
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "HND101ET/ME",
+        "title": "Engineering Mathematics I",
+        "credits": 20
+      },
+      {
+        "no": 2,
+        "code": "HND104ET/ME",
+        "title": "Engineering Mathematics II",
+        "credits": 20
+      },
+      {
+        "no": 3,
+        "code": "HND102ME",
+        "title": "Engineering Mechanics",
+        "credits": 20
+      },
+      {
+        "no": 4,
+        "code": "HD103ET/ME",
+        "title": "Introduction to Programming",
+        "credits": 20
+      },
+      {
+        "no": 5,
+        "code": "HD201ME",
+        "title": "Thermodynamics",
+        "credits": 20
+      },
+      {
+        "no": 6,
+        "code": "HD202ME",
+        "title": "Material Science and Manufacturing",
+        "credits": 20
+      },
+      {
+        "no": 7,
+        "code": "HD203ME",
+        "title": "Fluid Dynamics",
+        "credits": 20
+      },
+      {
+        "no": 8,
+        "code": "HD204ET/ME",
+        "title": "Project Management",
+        "credits": 20
+      },
+      {
+        "no": 9,
+        "code": "HD301ME",
+        "title": "Energy and Environment",
+        "credits": 20
+      },
+      {
+        "no": 10,
+        "code": "HD302ME",
+        "title": "Engineering Design (CAD/CAM)",
+        "credits": 20
+      },
+      {
+        "no": 11,
+        "code": "HD303ME",
+        "title": "Mechatronics and Control Systems",
+        "credits": 20
+      },
+      {
+        "no": 12,
+        "code": "HD304ME",
+        "title": "Mechanical Engineering Group Project",
+        "credits": 20
+      }
+    ],
+    "coreModulesYear1": [
+      "HND101ET/ME: Engineering Mathematics I (20 Credits)",
+      "HND104ET/ME: Engineering Mathematics II (20 Credits)",
+      "HND102ME: Engineering Mechanics (20 Credits)",
+      "HD103ET/ME: Introduction to Programming (20 Credits)",
+      "HD201ME: Thermodynamics (20 Credits)",
+      "HD202ME: Material Science and Manufacturing (20 Credits)"
+    ],
+    "coreModulesYear2": [
+      "HD203ME: Fluid Dynamics (20 Credits)",
+      "HD204ET/ME: Project Management (20 Credits)",
+      "HD301ME: Energy and Environment (20 Credits)",
+      "HD302ME: Engineering Design (CAD/CAM) (20 Credits)",
+      "HD303ME: Mechatronics and Control Systems (20 Credits)",
+      "HD304ME: Mechanical Engineering Group Project (20 Credits)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Part 1: Mechanical Principles, Mechanics & Materials",
+        "level": "120 UK Credits / 30 Local Credits",
+        "credits": 120,
+        "description": "Foundational analytical mathematics, statics, dynamics, technical programming, thermodynamics, and manufacturing materials.",
+        "modules": [
+          {
+            "code": "HND101ET/ME",
+            "name": "Engineering Mathematics I",
+            "credits": 20,
+            "description": "Differential and integral calculus, algebraic analysis, and mathematical modeling for mechanical systems."
+          },
+          {
+            "code": "HND104ET/ME",
+            "name": "Engineering Mathematics II",
+            "credits": 20,
+            "description": "Ordinary differential equations, linear algebra, and computational methods for engineering problem-solving."
+          },
+          {
+            "code": "HND102ME",
+            "name": "Engineering Mechanics",
+            "credits": 20,
+            "description": "Equilibrium of rigid bodies, force vectors, stress-strain behavior, trusses, and mechanical kinematics."
+          },
+          {
+            "code": "HD103ET/ME",
+            "name": "Introduction to Programming",
+            "credits": 20,
+            "description": "Algorithm design, structured programming, and computational scripts applied to engineering tasks."
+          },
+          {
+            "code": "HD201ME",
+            "name": "Thermodynamics",
+            "credits": 20,
+            "description": "First and second laws of thermodynamics, ideal gas cycles, heat engines, and steam systems."
+          },
+          {
+            "code": "HD202ME",
+            "name": "Material Science and Manufacturing",
+            "credits": 20,
+            "description": "Structure of metals, polymers, composites, heat treatment, casting, forming, and machining techniques."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Part 2: Thermo-Fluids, CAD/CAM, Mechatronics & Project",
+        "level": "120 UK Credits / 30 Local Credits",
+        "credits": 120,
+        "description": "Advanced fluid dynamics, project management, environmental energy systems, CAD/CAM design, mechatronics control, and collaborative capstone build.",
+        "modules": [
+          {
+            "code": "HD203ME",
+            "name": "Fluid Dynamics",
+            "credits": 20,
+            "description": "Fluid statics, Bernoulli equation, laminar and turbulent boundary layer flow, pipe friction, and pumps."
+          },
+          {
+            "code": "HD204ET/ME",
+            "name": "Project Management",
+            "credits": 20,
+            "description": "Project lifecycles, critical path planning, risk appraisal, resource budgeting, and quality frameworks."
+          },
+          {
+            "code": "HD301ME",
+            "name": "Energy and Environment",
+            "credits": 20,
+            "description": "Sustainable power generation, energy auditing, emission mitigation, and environmental impact assessments."
+          },
+          {
+            "code": "HD302ME",
+            "name": "Engineering Design (CAD/CAM)",
+            "credits": 20,
+            "description": "3D parametric solid modeling, geometric dimensioning, finite element stress analysis, and CNC toolpath generation."
+          },
+          {
+            "code": "HD303ME",
+            "name": "Mechatronics and Control Systems",
+            "credits": 20,
+            "description": "Electro-mechanical sensors, actuators, feedback control loops, PLC programming, and robotics."
+          },
+          {
+            "code": "HD304ME",
+            "name": "Mechanical Engineering Group Project",
+            "credits": 20,
+            "description": "Collaborative coursework capstone designing, prototyping, testing, and presenting a physical mechanical engineering solution."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Top-up degrees and career pathways",
+      "Mechanical Engineering Design Technologist",
+      "Manufacturing & CNC Production Specialist",
+      "HVAC, Thermal Systems & Energy Associate",
+      "Mechatronics & Automation Specialist",
+      "Automotive & Aerospace Maintenance Engineer"
+    ],
+    "industrySectors": [
+      "Automotive, Transport & Heavy Machinery",
+      "Aerospace & Precision Manufacturing",
+      "Thermal Power, Energy & Environmental Facilities",
+      "Robotics & Industrial Automation Plants"
+    ],
+    "laboratories": [
+      "Mechanical Workshops, CNC Turning & Milling Center",
+      "Thermodynamics, Heat Transfer & Fluid Mechanics Lab",
+      "CAD/CAM 3D Parametric Modeling & Simulation Studio",
+      "Mechatronics, Robotics & Automated Control Systems Suite"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1581094288338-2314dddb7ece'),
+        "caption": "Mechanical engineering laboratories and workshops equipped for practical precision testing.",
+        "category": "Workshop"
+      },
+      {
+        "url": photo('photo-1565043589221-1a6fd9ae45c7'),
+        "caption": "High-precision manufacturing, milling, and multi-axis CNC machining processes.",
+        "category": "Manufacturing"
+      },
+      {
+        "url": photo('photo-1581093588401-fbb62a02f120'),
+        "caption": "Engineering design (CAD/CAM), 3D modeling, and finite element simulation workspace.",
+        "category": "CAD/CAM"
+      },
+      {
+        "url": photo('photo-1581092921461-eab62e97a780'),
+        "caption": "Robotics, mechatronics automation, and industrial control systems laboratory.",
+        "category": "Mechatronics"
+      },
+      {
+        "url": photo('photo-1581092334651-ddf26d9a09d0'),
+        "caption": "Industrial mechanical engineering applications, energy systems, and fluid machinery.",
+        "category": "Energy & Fluids"
+      }
+    ]
+  },
+  {
+    "id": "hndeee",
+    "title": "Higher National Diploma in Electrical and Electronic Engineering (HNDEEE)",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "Higher National Diploma (HND)",
+    "awardingBodyPlaceholder": "British Institute of Engineering & Technology (BIET)",
+    "duration": "18 months",
+    "studyMode": "Full-Time / Part-Time",
+    "intakes": [
+      "5 March 2027",
+      "5 September 2027"
+    ],
+    "imageSvgType": "electrical",
+    "imageUrl": photo('photo-1581092160607-ee22621dd758'),
+    "heroImageUrl": photo('photo-1581091226825-a6a2a5aee158'),
+    "sampleBadgeNote": "",
+    "totalCredits": "240 UK credits / 60 Local Credits",
+    "moduleCount": 12,
+    "assessmentMethod": "Coursework",
+    "overview": "The Higher National Diploma in Electrical and Electronic Engineering (HNDEEE) at the British Institute of Engineering & Technology (BIET) is a comprehensive 18-month programme delivering thorough practical and theoretical competence across electrical circuits, embedded systems, microcontrollers, robotics, and renewable energy technologies.",
+    "progressionOpportunities": [
+      "Top-up degrees and career pathways",
+      "Direct pathway to final year Bachelor (BEng / BSc) degree top-up programmes",
+      "Professional engineering careers across electronics manufacturing, robotics, and automation"
+    ],
+    "entryRequirements": [
+      "Foundation or 3 A/L passes in Science/Technology or any related field"
+    ],
+    "whatYouWillLearn": [
+      "Analyse and solve engineering mathematics problems across calculus and differential equations.",
+      "Design, test, and troubleshoot digital circuits, logic systems, and analog electronic devices.",
+      "Develop structured programming solutions for technical and microcontroller-based automation.",
+      "Operate, analyse, and commission electrical machines, power systems, and renewable energy installations.",
+      "Program and interface microcontrollers with environmental sensors, actuators, and robotic mechanisms.",
+      "Collaborate within engineering teams to deliver an industry-relevant electronics group coursework project."
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "HND101ET/ME",
+        "title": "Engineering Mathematics I",
+        "credits": 20
+      },
+      {
+        "no": 2,
+        "code": "HND104ET/ME",
+        "title": "Engineering Mathematics II",
+        "credits": 20
+      },
+      {
+        "no": 3,
+        "code": "HD201ET",
+        "title": "Digital Circuits",
+        "credits": 20
+      },
+      {
+        "no": 4,
+        "code": "HD103ET/ME",
+        "title": "Introduction to Programming",
+        "credits": 20
+      },
+      {
+        "no": 5,
+        "code": "HD202ET",
+        "title": "Analog Electronics Technology",
+        "credits": 20
+      },
+      {
+        "no": 6,
+        "code": "HD203ET",
+        "title": "Electrical Machines and Power Systems",
+        "credits": 20
+      },
+      {
+        "no": 7,
+        "code": "HD102ET",
+        "title": "Electrical Technology",
+        "credits": 20
+      },
+      {
+        "no": 8,
+        "code": "HD204ET/ME",
+        "title": "Project Management",
+        "credits": 20
+      },
+      {
+        "no": 9,
+        "code": "HD301ET",
+        "title": "Microcontrollers, Sensors and Actuators",
+        "credits": 20
+      },
+      {
+        "no": 10,
+        "code": "HD302ET",
+        "title": "Embedded Systems and Robotics",
+        "credits": 20
+      },
+      {
+        "no": 11,
+        "code": "HD303ET",
+        "title": "Renewable Energy Systems",
+        "credits": 20
+      },
+      {
+        "no": 12,
+        "code": "HD304ET",
+        "title": "Electronics Group Project",
+        "credits": 20
+      }
+    ],
+    "coreModulesYear1": [
+      "HND101ET/ME: Engineering Mathematics I (20 Credits)",
+      "HND104ET/ME: Engineering Mathematics II (20 Credits)",
+      "HD201ET: Digital Circuits (20 Credits)",
+      "HD103ET/ME: Introduction to Programming (20 Credits)",
+      "HD202ET: Analog Electronics Technology (20 Credits)",
+      "HD203ET: Electrical Machines and Power Systems (20 Credits)"
+    ],
+    "coreModulesYear2": [
+      "HD102ET: Electrical Technology (20 Credits)",
+      "HD204ET/ME: Project Management (20 Credits)",
+      "HD301ET: Microcontrollers, Sensors and Actuators (20 Credits)",
+      "HD302ET: Embedded Systems and Robotics (20 Credits)",
+      "HD303ET: Renewable Energy Systems (20 Credits)",
+      "HD304ET: Electronics Group Project (20 Credits)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Part 1: Core Electrical & Electronic Foundations",
+        "level": "120 UK Credits / 30 Local Credits",
+        "credits": 120,
+        "description": "Comprehensive grounding in analytical mathematics, digital circuits, programming, analog technology, and power machinery.",
+        "modules": [
+          {
+            "code": "HND101ET/ME",
+            "name": "Engineering Mathematics I",
+            "credits": 20,
+            "description": "Calculus, complex variables, algebra, and mathematical analysis applied to physical systems."
+          },
+          {
+            "code": "HND104ET/ME",
+            "name": "Engineering Mathematics II",
+            "credits": 20,
+            "description": "Advanced differential equations, vector calculus, and engineering problem-solving methods."
+          },
+          {
+            "code": "HD201ET",
+            "name": "Digital Circuits",
+            "credits": 20,
+            "description": "Logic gates, combinational and sequential circuit design, flip-flops, registers, and digital counters."
+          },
+          {
+            "code": "HD103ET/ME",
+            "name": "Introduction to Programming",
+            "credits": 20,
+            "description": "Algorithms, data structures, and computer programming tailored for engineering applications."
+          },
+          {
+            "code": "HD202ET",
+            "name": "Analog Electronics Technology",
+            "credits": 20,
+            "description": "Semiconductor physics, operational amplifier circuits, active filtering, and analog signal conditioning."
+          },
+          {
+            "code": "HD203ET",
+            "name": "Electrical Machines and Power Systems",
+            "credits": 20,
+            "description": "Transformers, AC and DC rotating machines, magnetic circuits, and power distribution fundamentals."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Part 2: Applied Electronics, Embedded Systems & Robotics",
+        "level": "120 UK Credits / 30 Local Credits",
+        "credits": 120,
+        "description": "Advanced coursework covering electrical technology, project management, microcontrollers, embedded robotics, renewable power, and group capstone.",
+        "modules": [
+          {
+            "code": "HD102ET",
+            "name": "Electrical Technology",
+            "credits": 20,
+            "description": "Single and three-phase AC circuits, network theorems, resonance, and electrical safety standards."
+          },
+          {
+            "code": "HD204ET/ME",
+            "name": "Project Management",
+            "credits": 20,
+            "description": "Engineering project lifecycles, Gantt scheduling, budgeting, risk management, and quality control."
+          },
+          {
+            "code": "HD301ET",
+            "name": "Microcontrollers, Sensors and Actuators",
+            "credits": 20,
+            "description": "Microcontroller architecture, ADC/DAC interfaces, sensor conditioning, and electro-mechanical actuators."
+          },
+          {
+            "code": "HD302ET",
+            "name": "Embedded Systems and Robotics",
+            "credits": 20,
+            "description": "Real-time embedded software, kinematic control, robotic platform integration, and autonomous navigation."
+          },
+          {
+            "code": "HD303ET",
+            "name": "Renewable Energy Systems",
+            "credits": 20,
+            "description": "Solar photovoltaic generation, wind energy conversion, battery storage systems, and microgrid tie-in."
+          },
+          {
+            "code": "HD304ET",
+            "name": "Electronics Group Project",
+            "credits": 20,
+            "description": "Substantial collaborative group coursework designing, constructing, and defending an integrated engineering product."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Top-up degrees and career pathways",
+      "Electrical and Electronic Engineering Associate / Technologist",
+      "Embedded Systems & Firmware Specialist",
+      "Robotics & Industrial Automation Technologist",
+      "Renewable Energy & Power Systems Specialist",
+      "Electronics Quality & Commissioning Engineer"
+    ],
+    "industrySectors": [
+      "Electronics Design & Hardware Manufacturing",
+      "Industrial Automation & Robotics Systems",
+      "Renewable Energy, Solar & Wind Power Generation",
+      "Telecommunications & Embedded Device Development"
+    ],
+    "laboratories": [
+      "Electrical & Electronic Engineering Laboratory",
+      "Microcontrollers, Sensors & Embedded Systems Suite",
+      "Robotics & Automation Prototyping Workshop",
+      "Electrical Machines & Renewable Power Station"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1581092580497-e0d23cbdf1dc'),
+        "caption": "Electrical & Electronic Engineering Laboratory equipped with oscilloscopes, signal generators, and bench power supplies.",
+        "category": "Laboratory"
+      },
+      {
+        "url": photo('photo-1563770660941-20978e870e26'),
+        "caption": "Hands-on experimentation with electronic circuits, breadboards, sensors, and microcontrollers.",
+        "category": "Circuits & Embedded"
+      },
+      {
+        "url": photo('photo-1485827404703-89b55fcc595e'),
+        "caption": "Robotics and practical automation systems testbed for embedded control projects.",
+        "category": "Robotics"
+      },
+      {
+        "url": photo('photo-1581092795360-fd1ca04f0952'),
+        "caption": "Electrical machines, electromechanical drives, and renewable power equipment.",
+        "category": "Power & Energy"
+      }
+    ]
+  },
+  {
+    "id": "beng-mechanical-manufacturing",
+    "title": "BEng (Hons) Mechanical Engineering specialise in Manufacturing",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons)",
+    "affiliatedInstitution": "University of West England",
+    "awardingBodyPlaceholder": "University of West England",
+    "duration": "1 Year",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "March 2027",
+      "September 2027"
+    ],
+    "imageSvgType": "mechanical",
+    "imageUrl": photo('photo-1581094794329-c8112a89af12'),
+    "heroImageUrl": photo('photo-1617791160505-6f00504e3519'),
+    "sampleBadgeNote": "",
+    "totalCredits": "180",
+    "moduleCount": 9,
+    "assessmentMethod": "Coursework, Viva, Exam, Presentation",
+    "assessmentNote": "Assessment weighting changes from module to module.",
+    "overview": "A one-year BEng (Hons) Mechanical Engineering programme specialising in Manufacturing, affiliated with the University of West England. Designed for holders of HNDE, NDT or any similar programme to develop advanced expertise in stress analysis, electro-mechanical design systems, dynamics, lean manufacturing technology, mechanics of materials, control engineering, and reliability asset management.",
+    "progressionOpportunities": [
+      "Masters"
+    ],
+    "entryRequirements": [
+      "HNDE, NDT or any similar Programme"
+    ],
+    "whatYouWillLearn": [
+      "Stress Analysis (UFMFQA-15-2)",
+      "DEMS-Design and Electro-Mechanical System (UFMF88-30-2)",
+      "Dynamics (UFMFL8-15-2)",
+      "Lean Manufacturing Technology (UFMFDY-30-3)",
+      "Mechanics of Materials (UFMFP9-15-3)",
+      "Control engineering (UFMFYJ-15-3)",
+      "Reliability Engineering & Asset Management (UFMFPB-15-3)",
+      "Engineering Project (UFMFX8-30-3)",
+      "Materials & Structures for special applications (UFMF7K-15-3)"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "UFMFQA-15-2",
+        "title": "Stress Analysis",
+        "credits": 15,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "UFMF88-30-2",
+        "title": "DEMS-Design and Electro-Mechanical System",
+        "credits": 30,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "UFMFL8-15-2",
+        "title": "Dynamics",
+        "credits": 15,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "UFMFDY-30-3",
+        "title": "Lean Manufacturing Technology",
+        "credits": 30,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "UFMFP9-15-3",
+        "title": "Mechanics of Materials",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "UFMFYJ-15-3",
+        "title": "Control engineering",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "UFMFPB-15-3",
+        "title": "Reliability Engineering & Asset Management",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "UFMFX8-30-3",
+        "title": "Engineering Project",
+        "credits": 30,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 9,
+        "code": "UFMF7K-15-3",
+        "title": "Materials & Structures for special applications",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "UFMFQA-15-2: Stress Analysis (15 Credits - Sem 1)",
+      "UFMF88-30-2: DEMS-Design and Electro-Mechanical System (30 Credits - Sem 1)",
+      "UFMFL8-15-2: Dynamics (15 Credits - Sem 1)"
+    ],
+    "coreModulesYear2": [
+      "UFMFDY-30-3: Lean Manufacturing Technology (30 Credits - Sem 2/3)",
+      "UFMFP9-15-3: Mechanics of Materials (15 Credits - Sem 2/3)",
+      "UFMFYJ-15-3: Control engineering (15 Credits - Sem 2/3)",
+      "UFMFPB-15-3: Reliability Engineering & Asset Management (15 Credits - Sem 2/3)",
+      "UFMFX8-30-3: Engineering Project (30 Credits - Sem 2/3)",
+      "UFMF7K-15-3: Materials & Structures for special applications (15 Credits - Sem 2/3)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Semester 1: Stress Analysis, DEMS & Dynamics",
+        "level": "Level 2 / 60 Credits",
+        "credits": 60,
+        "description": "Core Level 2 modules covering stress analysis, design of electro-mechanical systems, and dynamics.",
+        "modules": [
+          {
+            "code": "UFMFQA-15-2",
+            "name": "Stress Analysis",
+            "credits": 15,
+            "description": "Core stress analysis fundamentals for mechanical components."
+          },
+          {
+            "code": "UFMF88-30-2",
+            "name": "DEMS-Design and Electro-Mechanical System",
+            "credits": 30,
+            "description": "Core design and electro-mechanical systems integration."
+          },
+          {
+            "code": "UFMFL8-15-2",
+            "name": "Dynamics",
+            "credits": 15,
+            "description": "Core mechanical dynamics and kinetic principles."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Semester 2/3: Advanced Manufacturing, Materials, Control & Project",
+        "level": "Level 3 / 120 Credits",
+        "credits": 120,
+        "description": "Core Level 3 modules covering lean manufacturing, mechanics of materials, control engineering, asset management, and the capstone project.",
+        "modules": [
+          {
+            "code": "UFMFDY-30-3",
+            "name": "Lean Manufacturing Technology",
+            "credits": 30,
+            "description": "Core lean manufacturing methodologies and production technology."
+          },
+          {
+            "code": "UFMFP9-15-3",
+            "name": "Mechanics of Materials",
+            "credits": 15,
+            "description": "Core mechanics of materials and structural integrity."
+          },
+          {
+            "code": "UFMFYJ-15-3",
+            "name": "Control engineering",
+            "credits": 15,
+            "description": "Core control engineering and automation."
+          },
+          {
+            "code": "UFMFPB-15-3",
+            "name": "Reliability Engineering & Asset Management",
+            "credits": 15,
+            "description": "Core reliability engineering and asset management systems."
+          },
+          {
+            "code": "UFMFX8-30-3",
+            "name": "Engineering Project",
+            "credits": 30,
+            "description": "Core comprehensive capstone engineering project."
+          },
+          {
+            "code": "UFMF7K-15-3",
+            "name": "Materials & Structures for special applications",
+            "credits": 15,
+            "description": "Core materials and advanced structures for special applications."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Masters",
+      "Manufacturing Systems Engineer",
+      "Mechanical Design & Production Engineer",
+      "Lean Manufacturing Specialist",
+      "Reliability & Asset Management Engineer",
+      "Electro-Mechanical Systems Specialist"
+    ],
+    "industrySectors": [
+      "Advanced Manufacturing & Industrial Automation",
+      "Mechanical Systems & Machinery Production",
+      "Automotive & Precision Manufacturing",
+      "Industrial Asset Management & Quality Engineering"
+    ],
+    "laboratories": [
+      "Manufacturing Processes & Industrial Machinery Lab",
+      "Materials Testing & Stress Analysis Suite",
+      "CAD/CAM & Electro-Mechanical Systems Studio",
+      "Control Engineering & Reliability Laboratory"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1563986768494-4dee2763ff3f'),
+        "caption": "Advanced CAD/CAM design workstations for electro-mechanical systems and stress modeling.",
+        "category": "Design & CAD"
+      },
+      {
+        "url": photo('photo-1531297484001-80022131f5a1'),
+        "caption": "High-precision test equipment for dynamics, control engineering, and materials evaluation.",
+        "category": "Testing & Control"
+      }
+    ]
+  },
+  {
+    "id": "beng-mechanical-mechatronics",
+    "title": "BEng(Hons) Mechanical Engineering specialise in Mechatronics",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons)",
+    "affiliatedInstitution": "University of West England",
+    "awardingBodyPlaceholder": "University of West England",
+    "duration": "1 Year",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "March 2027",
+      "September 2027"
+    ],
+    "imageSvgType": "mechanical",
+    "imageUrl": photo('photo-1561557944-6e7860d1a7eb'),
+    "heroImageUrl": photo('photo-1589254065878-42c9da997008'),
+    "sampleBadgeNote": "",
+    "totalCredits": "180",
+    "moduleCount": 9,
+    "assessmentMethod": "Coursework, Viva, Exam, Presentation",
+    "assessmentNote": "Assessment weighting changes from module to module.",
+    "overview": "A one-year BEng (Hons) Mechanical Engineering programme specialising in Mechatronics, affiliated with the University of West England. Designed for holders of HNDE, NDT or any similar programme to develop advanced expertise in stress analysis, electro-mechanical design systems, dynamics, integrated electro-mechanical systems, mechanics of materials, control engineering, energy technologies, and semiconductor materials.",
+    "progressionOpportunities": [
+      "Masters"
+    ],
+    "entryRequirements": [
+      "HNDE, NDT or any similar Programme"
+    ],
+    "whatYouWillLearn": [
+      "Stress Analysis (UFMFQA-15-2)",
+      "DEMS-Design and Electro-Mechanical System (UFMF88-30-2)",
+      "Dynamics (UFMFL8-15-2)",
+      "Integrated Electro Mechanical Systems (UFMFSL-15-3)",
+      "Mechanics of Materials (UFMFP9-15-3)",
+      "Control engineering (UFMFYJ-15-3)",
+      "Energy Technologies (UFMFD7-15-3)",
+      "Engineering Project (UFMFX8-30-3)",
+      "Materials for Semiconductors (UFMFFR-30-3)"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "UFMFQA-15-2",
+        "title": "Stress Analysis",
+        "credits": 15,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "UFMF88-30-2",
+        "title": "DEMS-Design and Electro-Mechanical System",
+        "credits": 30,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "UFMFL8-15-2",
+        "title": "Dynamics",
+        "credits": 15,
+        "semester": "Sem 1",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "UFMFSL-15-3",
+        "title": "Integrated Electro Mechanical Systems",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "UFMFP9-15-3",
+        "title": "Mechanics of Materials",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "UFMFYJ-15-3",
+        "title": "Control engineering",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "UFMFD7-15-3",
+        "title": "Energy Technologies",
+        "credits": 15,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "UFMFX8-30-3",
+        "title": "Engineering Project",
+        "credits": 30,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      },
+      {
+        "no": 9,
+        "code": "UFMFFR-30-3",
+        "title": "Materials for Semiconductors",
+        "credits": 30,
+        "semester": "Sem 2/3",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "UFMFQA-15-2: Stress Analysis (15 Credits - Sem 1)",
+      "UFMF88-30-2: DEMS-Design and Electro-Mechanical System (30 Credits - Sem 1)",
+      "UFMFL8-15-2: Dynamics (15 Credits - Sem 1)"
+    ],
+    "coreModulesYear2": [
+      "UFMFSL-15-3: Integrated Electro Mechanical Systems (15 Credits - Sem 2/3)",
+      "UFMFP9-15-3: Mechanics of Materials (15 Credits - Sem 2/3)",
+      "UFMFYJ-15-3: Control engineering (15 Credits - Sem 2/3)",
+      "UFMFD7-15-3: Energy Technologies (15 Credits - Sem 2/3)",
+      "UFMFX8-30-3: Engineering Project (30 Credits - Sem 2/3)",
+      "UFMFFR-30-3: Materials for Semiconductors (30 Credits - Sem 2/3)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Semester 1: Stress Analysis, DEMS & Dynamics",
+        "level": "Level 2 / 60 Credits",
+        "credits": 60,
+        "description": "Core Level 2 modules covering stress analysis, design of electro-mechanical systems, and dynamics.",
+        "modules": [
+          {
+            "code": "UFMFQA-15-2",
+            "name": "Stress Analysis",
+            "credits": 15,
+            "description": "Core stress analysis fundamentals for mechanical components."
+          },
+          {
+            "code": "UFMF88-30-2",
+            "name": "DEMS-Design and Electro-Mechanical System",
+            "credits": 30,
+            "description": "Core design and electro-mechanical systems integration."
+          },
+          {
+            "code": "UFMFL8-15-2",
+            "name": "Dynamics",
+            "credits": 15,
+            "description": "Core mechanical dynamics and kinetic principles."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Semester 2/3: Mechatronics Systems, Control, Energy & Project",
+        "level": "Level 3 / 120 Credits",
+        "credits": 120,
+        "description": "Core Level 3 modules covering integrated electro-mechanical systems, mechanics of materials, control engineering, energy technologies, semiconductor materials, and the capstone engineering project.",
+        "modules": [
+          {
+            "code": "UFMFSL-15-3",
+            "name": "Integrated Electro Mechanical Systems",
+            "credits": 15,
+            "description": "Core integrated electro-mechanical systems and mechatronics."
+          },
+          {
+            "code": "UFMFP9-15-3",
+            "name": "Mechanics of Materials",
+            "credits": 15,
+            "description": "Core mechanics of materials and structural integrity."
+          },
+          {
+            "code": "UFMFYJ-15-3",
+            "name": "Control engineering",
+            "credits": 15,
+            "description": "Core control engineering and automation."
+          },
+          {
+            "code": "UFMFD7-15-3",
+            "name": "Energy Technologies",
+            "credits": 15,
+            "description": "Core energy technologies and sustainable power systems."
+          },
+          {
+            "code": "UFMFX8-30-3",
+            "name": "Engineering Project",
+            "credits": 30,
+            "description": "Core comprehensive capstone engineering project."
+          },
+          {
+            "code": "UFMFFR-30-3",
+            "name": "Materials for Semiconductors",
+            "credits": 30,
+            "description": "Core semiconductor materials and physical electronics."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Masters",
+      "Mechatronics Systems Engineer",
+      "Robotics & Automation Specialist",
+      "Electro-Mechanical Design Engineer",
+      "Control Systems & Instrumentation Engineer",
+      "Embedded Systems & Actuator Specialist"
+    ],
+    "industrySectors": [
+      "Robotics & Industrial Automation",
+      "Electro-Mechanical Systems & Mechatronics",
+      "Smart Energy & Semiconductor Technologies",
+      "Automotive, Aerospace & Precision Instrumentation"
+    ],
+    "laboratories": [
+      "Robotics & Electro-Mechanical Systems Suite",
+      "Mechatronics & Automated Control Systems Laboratory",
+      "Stress Analysis & Materials Testing Facility",
+      "Semiconductors & Sensors Innovation Lab"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1535378917042-10a22c95931a'),
+        "caption": "Advanced robotics, sensor arrays, and mechatronic control instrumentation.",
+        "category": "Robotics & Control"
+      },
+      {
+        "url": photo('photo-1563245372-f21724e3856d'),
+        "caption": "Semiconductor materials, embedded circuitry, and electro-mechanical test stations.",
+        "category": "Semiconductors"
+      }
+    ]
+  },
+  {
+    "id": "beng-electrical-electronics",
+    "title": "BEng (Hons) Electrical and Electronics Engineering",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons)",
+    "affiliatedInstitution": "University of West England",
+    "awardingBodyPlaceholder": "University of West England",
+    "duration": "1 year",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "March 2027",
+      "September 2027"
+    ],
+    "imageSvgType": "electrical",
+    "imageUrl": photo('photo-1517077304055-6e89abbf09b0'),
+    "heroImageUrl": photo('photo-1581092335878-2d9ff86ca2bf'),
+    "sampleBadgeNote": "",
+    "totalCredits": "180",
+    "moduleCount": 9,
+    "assessmentMethod": "Coursework, Viva, Exam, Presentation",
+    "assessmentNote": "Assessment weighting changes from module to module.",
+    "overview": "The BEng (Hons) Electrical and Electronics Engineering programme, affiliated with the University of West England, is an intensive 1-year honours degree designed for holders of HNDE, NDT, or similar diplomas seeking advanced qualifications across digital design, control, digital signals processing, power electronics, and energy technologies.",
+    "progressionOpportunities": [
+      "Masters",
+      "Direct pathway to postgraduate Master’s degree programmes",
+      "Professional engineering careers across electronics, power, automation, and telecommunication industries"
+    ],
+    "entryRequirements": [
+      "HNDE, NDT or any similar Programme"
+    ],
+    "whatYouWillLearn": [
+      "Master digital hardware design, logic synthesis, and FPGA digital electronic architectures.",
+      "Apply Statistical Process Control (SPC) and quality engineering methodologies to electronic systems.",
+      "Formulate and tune advanced dynamic control systems for automation and industrial applications.",
+      "Implement digital signals processing (DSP) algorithms for real-time signal filtering and spectral estimation.",
+      "Analyse, model, and deploy power electronics converters, motor drives, and energy conversion topologies.",
+      "Execute Control Systems Design (CSD) frameworks and assess sustainable energy technologies.",
+      "Investigate MFS methodologies and deliver a comprehensive individual IP2 capstone engineering project."
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "UFMFE8-30-2",
+        "title": "Digital Design",
+        "credits": 30,
+        "semester": "Sem 1"
+      },
+      {
+        "no": 2,
+        "code": "UFMFMA-15-2",
+        "title": "SPC",
+        "credits": 15,
+        "semester": "Sem 1"
+      },
+      {
+        "no": 3,
+        "code": "UFMFV7-15-2",
+        "title": "Control",
+        "credits": 15,
+        "semester": "Sem 1"
+      },
+      {
+        "no": 4,
+        "code": "UFMFH8-15-3",
+        "title": "Digital Signals Processing",
+        "credits": 15,
+        "semester": "Sem 2/3"
+      },
+      {
+        "no": 5,
+        "code": "UFMFDE-15-3",
+        "title": "Power Electronics",
+        "credits": 15,
+        "semester": "Sem 2/3"
+      },
+      {
+        "no": 6,
+        "code": "UFMFW7-15-3",
+        "title": "CSD",
+        "credits": 15,
+        "semester": "Sem 2/3"
+      },
+      {
+        "no": 7,
+        "code": "UFMFD7-15-3",
+        "title": "Energy Technologies",
+        "credits": 15,
+        "semester": "Sem 2/3"
+      },
+      {
+        "no": 8,
+        "code": "UFMFFR-30-3",
+        "title": "MFS",
+        "credits": 30,
+        "semester": "Sem 2/3"
+      },
+      {
+        "no": 9,
+        "code": "UFMFX8-30-3",
+        "title": "IP2",
+        "credits": 30,
+        "semester": "Sem 2/3"
+      }
+    ],
+    "coreModulesYear1": [
+      "UFMFE8-30-2: Digital Design (30 Credits - Sem 1)",
+      "UFMFMA-15-2: SPC (15 Credits - Sem 1)",
+      "UFMFV7-15-2: Control (15 Credits - Sem 1)"
+    ],
+    "coreModulesYear2": [
+      "UFMFH8-15-3: Digital Signals Processing (15 Credits - Sem 2/3)",
+      "UFMFDE-15-3: Power Electronics (15 Credits - Sem 2/3)",
+      "UFMFW7-15-3: CSD (15 Credits - Sem 2/3)",
+      "UFMFD7-15-3: Energy Technologies (15 Credits - Sem 2/3)",
+      "UFMFFR-30-3: MFS (30 Credits - Sem 2/3)",
+      "UFMFX8-30-3: IP2 (30 Credits - Sem 2/3)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Semester 1: Digital Systems, SPC & Control",
+        "level": "Level 2 / 60 Credits",
+        "credits": 60,
+        "description": "Comprehensive grounding in digital design, statistical process control, and dynamic feedback control.",
+        "modules": [
+          {
+            "code": "UFMFE8-30-2",
+            "name": "Digital Design",
+            "credits": 30,
+            "description": "Synchronous logic, finite state machines, HDL hardware design, and digital electronic circuits."
+          },
+          {
+            "code": "UFMFMA-15-2",
+            "name": "SPC",
+            "credits": 15,
+            "description": "Statistical process control, quality metrics, and process variation management in electronics."
+          },
+          {
+            "code": "UFMFV7-15-2",
+            "name": "Control",
+            "credits": 15,
+            "description": "Classical and state-space control, frequency response, stability criteria, and PID loop tuning."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Semester 2/3: Signals, Power, Energy & Capstone",
+        "level": "Level 3 / 120 Credits",
+        "credits": 120,
+        "description": "Advanced digital signal processing, power electronics, CSD, energy technologies, MFS, and individual IP2 project.",
+        "modules": [
+          {
+            "code": "UFMFH8-15-3",
+            "name": "Digital Signals Processing",
+            "credits": 15,
+            "description": "Z-transforms, FIR/IIR filter design, fast Fourier transform algorithms, and digital signal hardware."
+          },
+          {
+            "code": "UFMFDE-15-3",
+            "name": "Power Electronics",
+            "credits": 15,
+            "description": "DC-DC converters, inverters, power semiconductor switching, and electric drive controls."
+          },
+          {
+            "code": "UFMFW7-15-3",
+            "name": "CSD",
+            "credits": 15,
+            "description": "Modern control systems design, digital controllers, and practical system implementation."
+          },
+          {
+            "code": "UFMFD7-15-3",
+            "name": "Energy Technologies",
+            "credits": 15,
+            "description": "Renewable energy systems, solar, wind, power grid dynamics, and energy storage."
+          },
+          {
+            "code": "UFMFFR-30-3",
+            "name": "MFS",
+            "credits": 30,
+            "description": "Advanced engineering analysis, modeling, and system design."
+          },
+          {
+            "code": "UFMFX8-30-3",
+            "name": "IP2",
+            "credits": 30,
+            "description": "Substantial individual capstone engineering research and development dissertation."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Masters Progression (MSc / MEng)",
+      "Digital Hardware & FPGA Design Engineer",
+      "Control Systems & Automation Specialist",
+      "Power Electronics & Renewable Energy Engineer",
+      "Digital Signal Processing (DSP) Specialist",
+      "Electronic Systems Development Engineer"
+    ],
+    "industrySectors": [
+      "Electronics & Semiconductor Industries",
+      "Power Generation & Smart Energy Utilities",
+      "Industrial Automation & Robotics Systems",
+      "Telecommunications & Digital Hardware Systems"
+    ],
+    "laboratories": [
+      "Electrical & Electronics Engineering Laboratory",
+      "Digital Systems & FPGA Design Studio",
+      "Power Electronics & Motor Drives Testing Facility",
+      "Digital Signal Processing & Control Systems Suite"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1581092583537-20d51b4b4f1b'),
+        "caption": "Electrical and electronics engineering laboratories for digital circuit design and component testing.",
+        "category": "Laboratories"
+      },
+      {
+        "url": photo('photo-1581093806997-124204d9fa9d'),
+        "caption": "Students working with circuit boards, microcontrollers, and electronic equipment.",
+        "category": "Practical Training"
+      },
+      {
+        "url": photo('photo-1581093450021-4a7360e9a6b5'),
+        "caption": "Power electronics test bench, high-voltage switching, and feedback control systems.",
+        "category": "Power & Control"
+      },
+      {
+        "url": photo('photo-1550751827-4bd374c3f58b'),
+        "caption": "Digital signals processing, spectral telemetry, and advanced engineering technology.",
+        "category": "DSP & Systems"
+      }
+    ]
+  },
+  {
+    "id": "foundation-in-engineering",
+    "title": "Foundation in Engineering",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "Foundation in Engineering",
+    "awardingBodyPlaceholder": "British Institute of Engineering Technology (BIET)",
+    "duration": "6 Months",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "7 January 2027 – Next Starting Date",
+      "7 May 2027",
+      "7 September 2027"
+    ],
+    "nextIntakeHighlight": "7 January 2027",
+    "imageSvgType": "mechanical",
+    "imageUrl": photo('photo-1581092160562-40aa08e78837'),
+    "heroImageUrl": photo('photo-1581092918056-0c4c3acd3789'),
+    "sampleBadgeNote": "",
+    "totalCredits": "120 UK Credits / 60 Local Credits",
+    "moduleCount": 6,
+    "assessmentMethod": "Courseworks",
+    "overview": "A six-month foundation programme in engineering offered by the British Institute of Engineering Technology (BIET). Designed for students after O/L to establish core academic, mathematical, IT, and engineering capabilities required for progression into Higher National Diploma (HND) engineering pathways.",
+    "progressionOpportunities": [
+      "Higher National Diploma (HND)"
+    ],
+    "entryRequirements": [
+      "After O/L"
+    ],
+    "whatYouWillLearn": [
+      "Develop core skills in Introductory Engineering Mathematics.",
+      "Enhance English for Academic Purposes for technical writing and communication.",
+      "Acquire practical knowledge through Introduction to Information Technology.",
+      "Understand and apply Introduction to Statistics for data interpretation.",
+      "Gain foundational insights into Understanding Business Concepts in an engineering context.",
+      "Learn fundamental Engineering Concepts for physical and technological systems."
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "FDEIEM101",
+        "title": "Introductory Engineering Mathematics",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      },
+      {
+        "no": 2,
+        "code": "FDEEAP203",
+        "title": "English for Academic Purposes",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      },
+      {
+        "no": 3,
+        "code": "FDEIIT103",
+        "title": "Introduction to Information Technology",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      },
+      {
+        "no": 4,
+        "code": "FDEIS102",
+        "title": "Introduction to Statistics",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      },
+      {
+        "no": 5,
+        "code": "FDEUBC201",
+        "title": "Understanding Business Concepts",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      },
+      {
+        "no": 6,
+        "code": "FDEEC202",
+        "title": "Engineering Concepts",
+        "credits": 20,
+        "creditsDisplay": "UK 20 / Local 5"
+      }
+    ],
+    "coreModulesYear1": [
+      "FDEIEM101: Introductory Engineering Mathematics (UK 20 / Local 5)",
+      "FDEEAP203: English for Academic Purposes (UK 20 / Local 5)",
+      "FDEIIT103: Introduction to Information Technology (UK 20 / Local 5)",
+      "FDEIS102: Introduction to Statistics (UK 20 / Local 5)",
+      "FDEUBC201: Understanding Business Concepts (UK 20 / Local 5)",
+      "FDEEC202: Engineering Concepts (UK 20 / Local 5)"
+    ],
+    "coreModulesYear2": [],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Core Foundation Modules (6 Months)",
+        "level": "Foundation Level / 120 UK Credits / 60 Local Credits",
+        "credits": 120,
+        "description": "Structured six-month foundation delivering all six essential core engineering modules.",
+        "modules": [
+          {
+            "code": "FDEIEM101",
+            "name": "Introductory Engineering Mathematics",
+            "credits": 20,
+            "description": "Core mathematics, algebraic techniques, trigonometry, and calculus fundamentals for engineering."
+          },
+          {
+            "code": "FDEEAP203",
+            "name": "English for Academic Purposes",
+            "credits": 20,
+            "description": "Academic English, technical communication, report structuring, and scientific literacy."
+          },
+          {
+            "code": "FDEIIT103",
+            "name": "Introduction to Information Technology",
+            "credits": 20,
+            "description": "Computing principles, essential engineering software, data management, and digital applications."
+          },
+          {
+            "code": "FDEIS102",
+            "name": "Introduction to Statistics",
+            "credits": 20,
+            "description": "Probability, data distributions, experimental analysis, and statistical evaluation."
+          },
+          {
+            "code": "FDEUBC201",
+            "name": "Understanding Business Concepts",
+            "credits": 20,
+            "description": "Business fundamentals, organizational concepts, enterprise operations, and economics in engineering."
+          },
+          {
+            "code": "FDEEC202",
+            "name": "Engineering Concepts",
+            "credits": 20,
+            "description": "Core engineering concepts across mechanical, electrical, and applied physical systems."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Higher National Diploma (HND) in Mechanical Engineering",
+      "Higher National Diploma (HND) in Electrical and Electronic Engineering",
+      "Higher National Diploma (HND) across Engineering & Technology disciplines"
+    ],
+    "industrySectors": [
+      "Higher National Diploma (HND) Academic Pathways",
+      "Foundation Engineering Studies",
+      "Applied Technical Systems"
+    ],
+    "laboratories": [
+      "Engineering Science & Practical Concepts Laboratory",
+      "Technical Computing & IT Suite",
+      "Academic Engineering Workshop"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1516321318423-f06f85e504b3'),
+        "caption": "Students developing technical computing and digital skills in the IT lab.",
+        "category": "Computing Lab"
+      },
+      {
+        "url": photo('photo-1517486808906-6ca8b3f04846'),
+        "caption": "Foundation engineering students collaborating on technical coursework and engineering concepts.",
+        "category": "Academic Study"
+      },
+      {
+        "url": photo('photo-1581092918056-0c4c3acd3789'),
+        "caption": "Engineering drafting, mathematical calculations, and foundational technical concepts.",
+        "category": "Engineering Concepts"
+      }
+    ]
+  },
+  {
+    "id": "electrical-electronic",
+    "title": "Electrical & Electronic Systems Engineering",
+    "category": "engineering",
+    "school": "School of Engineering",
+    "qualification": "BEng (Hons) / HND Pathway",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "electrical",
+    "imageUrl": photo('photo-1518770660439-4636190af475'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "Provides deep theoretical grounding and bench experimentation across electrical power grids, analogue and digital circuit design, embedded microcontrollers, signal processing, and high-frequency communication electronics.",
+    "whatYouWillLearn": [
+      "Analyse AC/DC circuits, transmission networks, magnetic circuits, and polyphase power systems.",
+      "Design printed circuit boards (PCBs) and analogue/digital integrated circuits.",
+      "Program embedded microcontrollers using C/C++ and interface with sensors and wireless transceivers.",
+      "Model renewable energy integration, high-voltage transformers, and intelligent smart grid systems.",
+      "Apply Digital Signal Processing (DSP) algorithms to telecommunication signals and audio/image feeds."
+    ],
+    "coreModulesYear1": [
+      "Circuit Analysis & Electromagnetic Fields",
+      "Digital Electronics & Logic Design",
+      "Engineering Mathematics for Electrical Systems",
+      "C/C++ Programming for Embedded Systems"
+    ],
+    "coreModulesYear2": [
+      "Microprocessors & Microcontroller Architectures",
+      "Signals, Systems & Digital Signal Processing",
+      "Power Electronics & Electric Drives",
+      "Analog Integrated Circuit Design"
+    ],
+    "coreModulesYear3": [
+      "Smart Grids & Sustainable Electrical Distribution",
+      "High-Speed Communication Systems & RF Engineering",
+      "Industrial Automation & PLC Programming",
+      "Major Electrical Engineering Final Year Project"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Circuits, Digital Logic & Embedded C",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Fundamental circuit theorems, boolean logic gates, electromagnetic physics, and embedded software basics.",
+        "modules": [
+          {
+            "code": "EEE101",
+            "name": "Engineering Mathematics & Complex Analysis",
+            "credits": 20,
+            "description": "Laplace transforms, Fourier series, and linear algebra applied to frequency domain circuits."
+          },
+          {
+            "code": "EEE102",
+            "name": "Electric Circuit Analysis & Network Theorems",
+            "credits": 20,
+            "description": "Thevenin, Norton, superposition theorems, AC sinusoidal steady-state, and resonance."
+          },
+          {
+            "code": "EEE103",
+            "name": "Digital Logic & Combinational Circuits",
+            "credits": 20,
+            "description": "Boolean algebra, Karnaugh maps, logic gate families, flip-flops, registers, and counters."
+          },
+          {
+            "code": "EEE104",
+            "name": "Electromagnetic Field Theory",
+            "credits": 20,
+            "description": "Coulomb and Gauss laws, magnetic vector potentials, Maxwell equations, and transmission lines."
+          },
+          {
+            "code": "EEE105",
+            "name": "C/C++ for Embedded Systems",
+            "credits": 20,
+            "description": "Pointers, memory management, peripheral registers, interrupts, and microcontroller debugging."
+          },
+          {
+            "code": "EEE106",
+            "name": "Electrical Workshop & Measurement Instrumentation",
+            "credits": 20,
+            "description": "Oscilloscope measurements, signal generators, multimeter calibration, and electrical safety codes."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Microprocessors, DSP & Power Electronics",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "ARM Cortex architectures, digital filtering, power converters, and high-frequency analog devices.",
+        "modules": [
+          {
+            "code": "EEE201",
+            "name": "Microprocessor & Microcontroller Architectures",
+            "credits": 20,
+            "description": "ARM Cortex instruction sets, DMA channels, timers, UART/SPI/I2C protocols, and RTOS."
+          },
+          {
+            "code": "EEE202",
+            "name": "Analog Electronic Design & Op-Amps",
+            "credits": 20,
+            "description": "BJT and MOSFET small-signal models, active filters, feedback amplifiers, and noise analysis."
+          },
+          {
+            "code": "EEE203",
+            "name": "Signals, Systems & Digital Signal Processing",
+            "credits": 20,
+            "description": "Z-transforms, discrete Fourier transforms (FFT), FIR/IIR digital filter design in MATLAB."
+          },
+          {
+            "code": "EEE204",
+            "name": "Power Electronics & Motor Drives",
+            "credits": 20,
+            "description": "Buck/boost converters, inverters, thyristor rectifiers, and variable frequency motor drives."
+          },
+          {
+            "code": "EEE205",
+            "name": "Electrical Machines & Transformer Design",
+            "credits": 20,
+            "description": "Induction motors, synchronous machines, 3-phase transformers, and magnetic core saturation."
+          },
+          {
+            "code": "EEE206",
+            "name": "PCB Layout & Electromagnetic Compatibility (EMC)",
+            "credits": 20,
+            "description": "Multi-layer PCB routing, impedance matching, ground planes, and EMC emission shielding."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Smart Grids, RF Systems & Senior Thesis",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Independent final project, smart grid management, telecommunication microwaves, and wireless IoT devices.",
+        "modules": [
+          {
+            "code": "EEE301",
+            "name": "Major Electrical Engineering Capstone Thesis",
+            "credits": 40,
+            "description": "Independent hardware design, embedded prototype development, and academic viva defense."
+          },
+          {
+            "code": "EEE302",
+            "name": "Smart Grids & Power Distribution Networks",
+            "credits": 20,
+            "description": "Microgrids, SCADA distribution automation, grid protection relays, and solar/wind tie-ins."
+          },
+          {
+            "code": "EEE303",
+            "name": "RF Engineering & High-Frequency Communications",
+            "credits": 20,
+            "description": "Smith charts, microwave wave-guides, antenna theory, and wireless propagation models."
+          },
+          {
+            "code": "EEE304",
+            "name": "Industrial Automation & SCADA Systems",
+            "credits": 20,
+            "description": "Industrial Ethernet, DCS architectures, safety-instrumented systems (SIS), and HMI design."
+          },
+          {
+            "code": "EEE305",
+            "name": "Internet of Things (IoT) Hardware Architectures",
+            "credits": 20,
+            "description": "Ultra-low-power microcontrollers, LoRaWAN/BLE communications, and energy harvesting."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Passes in G.C.E. A/L or Cambridge/Edexcel London A-Levels in Combined Mathematics and Physics, OR",
+      "Approved Higher National Diploma / National Diploma in Electrical Engineering [Placeholder].",
+      "Credit pass in Ordinary Level Mathematics and English."
+    ],
+    "careerPathways": [
+      "Power Systems & Grid Distribution Engineer",
+      "Embedded Firmware & IoT Systems Specialist",
+      "Analog / Digital Hardware Electronics Engineer",
+      "Telecommunications & RF Systems Specialist",
+      "Renewable Energy Integration Consultant"
+    ],
+    "industrySectors": [
+      "National & Regional Power Utilities",
+      "Telecommunication & Cellular Networks",
+      "Semiconductor & Hardware Electronics Manufacturing",
+      "Automation & Renewable Energy EPCs"
+    ],
+    "laboratories": [
+      "Digital Signal & Microprocessor Architecture Lab",
+      "High-Voltage & Power Systems Simulation Suite",
+      "Electronics Prototyping & SMT Assembly Workshop",
+      "RF & Microwave Communications Testing Bench"
+    ]
+  },
+  {
+    "id": "diploma-in-computing",
+    "title": "Diploma in Computing",
+    "category": "computing",
+    "school": "Faculty of Computing",
+    "qualification": "Diploma in Computing",
+    "awardingBodyPlaceholder": "British Institute of Engineering Technology (BIET)",
+    "affiliatedInstitution": "TVEC (Pending)",
+    "duration": "12 Months",
+    "studyMode": "Part-Time / Weekend Delivery",
+    "studySchedule": "2 days per week",
+    "intakes": [
+      "18 January 2027",
+      "17 May 2027",
+      "20 September 2027"
+    ],
+    "imageSvgType": "software",
+    "imageUrl": photo('photo-1517694712202-14dd9538aa97'),
+    "heroImageUrl": photo('photo-1504639725590-34d0984388bd'),
+    "sampleBadgeNote": "",
+    "totalCredits": "120",
+    "moduleCount": 8,
+    "assessmentMethod": "Individual Assignments with Viva",
+    "overview": "A 12-month programme offered by BIET’s Faculty of Computing. The Diploma in Computing delivers foundational and practical knowledge across computer systems, programming, web development, cyber security, AI applications, and robotics, preparing students for higher academic pathways.",
+    "progressionOpportunities": [
+      "HND Programmes"
+    ],
+    "entryRequirements": [
+      "O/L pending"
+    ],
+    "whatYouWillLearn": [
+      "Introduction to Computer System (DCC01151)",
+      "Soft Skills Development (DCC02151)",
+      "Mathematics Foundation (DCC03151)",
+      "Programming Foundation (DCC04151)",
+      "Introduction to Web Development (DCC05152)",
+      "Introduction to Cyber Security (DCC06152)",
+      "AI Application for Future (DCC07152)",
+      "Introduction to Robotics (DCC08152)"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "DCC01151",
+        "title": "Introduction to Computer System",
+        "credits": 15,
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "DCC02151",
+        "title": "Soft Skills Development",
+        "credits": 15,
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "DCC03151",
+        "title": "Mathematics Foundation",
+        "credits": 15,
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "DCC04151",
+        "title": "Programming Foundation",
+        "credits": 15,
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "DCC05152",
+        "title": "Introduction to Web Development",
+        "credits": 15,
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "DCC06152",
+        "title": "Introduction to Cyber Security",
+        "credits": 15,
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "DCC07152",
+        "title": "AI Application for Future",
+        "credits": 15,
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "DCC08152",
+        "title": "Introduction to Robotics",
+        "credits": 15,
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "DCC01151: Introduction to Computer System (15 Credits - 1st Semester)",
+      "DCC02151: Soft Skills Development (15 Credits - 1st Semester)",
+      "DCC03151: Mathematics Foundation (15 Credits - 1st Semester)",
+      "DCC04151: Programming Foundation (15 Credits - 1st Semester)"
+    ],
+    "coreModulesYear2": [
+      "DCC05152: Introduction to Web Development (15 Credits - 2nd Semester)",
+      "DCC06152: Introduction to Cyber Security (15 Credits - 2nd Semester)",
+      "DCC07152: AI Application for Future (15 Credits - 2nd Semester)",
+      "DCC08152: Introduction to Robotics (15 Credits - 2nd Semester)"
+    ],
+    "coreModulesYear3": [],
+    "structureBreakdown": [
+      {
+        "yearTitle": "1st Semester: Foundations of Computing & Systems",
+        "level": "Level 1 / 60 Credits",
+        "credits": 60,
+        "description": "Core 1st Semester modules covering computer systems, soft skills, mathematics foundation, and programming fundamentals.",
+        "modules": [
+          {
+            "code": "DCC01151",
+            "name": "Introduction to Computer System",
+            "credits": 15,
+            "description": "Core computer system architecture, hardware, operating systems, and computing fundamentals."
+          },
+          {
+            "code": "DCC02151",
+            "name": "Soft Skills Development",
+            "credits": 15,
+            "description": "Core communication, interpersonal skills, teamwork, and professional career development."
+          },
+          {
+            "code": "DCC03151",
+            "name": "Mathematics Foundation",
+            "credits": 15,
+            "description": "Core mathematical principles, discrete concepts, and logic foundation for computing."
+          },
+          {
+            "code": "DCC04151",
+            "name": "Programming Foundation",
+            "credits": 15,
+            "description": "Core programming logic, control structures, problem-solving algorithms, and syntax."
+          }
+        ]
+      },
+      {
+        "yearTitle": "2nd Semester: Applied Technologies & Emerging Fields",
+        "level": "Level 2 / 60 Credits",
+        "credits": 60,
+        "description": "Core 2nd Semester modules covering web development, cyber security, AI applications, and robotics.",
+        "modules": [
+          {
+            "code": "DCC05152",
+            "name": "Introduction to Web Development",
+            "credits": 15,
+            "description": "Core web architecture, frontend interfaces, HTML/CSS/JS, and responsive design."
+          },
+          {
+            "code": "DCC06152",
+            "name": "Introduction to Cyber Security",
+            "credits": 15,
+            "description": "Core security fundamentals, network defense, threat awareness, and safe practices."
+          },
+          {
+            "code": "DCC07152",
+            "name": "AI Application for Future",
+            "credits": 15,
+            "description": "Core artificial intelligence concepts, modern machine learning tools, and future applications."
+          },
+          {
+            "code": "DCC08152",
+            "name": "Introduction to Robotics",
+            "credits": 15,
+            "description": "Core robotics concepts, automated systems, sensors, and computing integration."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "HND Programmes",
+      "Higher National Diploma in Computing & Software Engineering",
+      "Higher National Diploma in Cyber Security & Network Systems"
+    ],
+    "industrySectors": [
+      "HND Academic Pathways",
+      "Information Technology & Computing",
+      "Software & Web Development"
+    ],
+    "laboratories": [
+      "Computing & Software Development Laboratory",
+      "Web Technologies & Multimedia Studio",
+      "Cyber Security & Network Testing Suite",
+      "Robotics & AI Experimentation Lab"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1526374965328-7f61d4dc18c5'),
+        "caption": "Cyber security, binary algorithms, and secure digital systems laboratory.",
+        "category": "Cyber Security"
+      },
+      {
+        "url": photo('photo-1515378791036-0648a3ef77b2'),
+        "caption": "Modern computing workstations, web interfaces, and programming environments.",
+        "category": "Web & Programming"
+      }
+    ]
+  },
+  {
+    "id": "hnd-artificial-intelligence",
+    "title": "Higher National Diploma in Artificial Intelligence (AI)",
+    "category": "computing",
+    "school": "Faculty of Computing",
+    "qualification": "Higher National Diploma (HND)",
+    "awardingBodyPlaceholder": "British Institute of Engineering Technology (BIET)",
+    "affiliatedInstitution": "TVEC (Pending)",
+    "duration": "18 Months",
+    "studyMode": "Part-Time / Weekend Delivery",
+    "studySchedule": "2 days per week",
+    "intakes": [
+      "5 March 2027",
+      "19 September 2027"
+    ],
+    "imageSvgType": "software",
+    "imageUrl": photo('photo-1677442136019-21780ecad995'),
+    "heroImageUrl": photo('photo-1620712943543-bcc4688e7485'),
+    "sampleBadgeNote": "",
+    "totalCredits": "240 Credits",
+    "moduleCount": 12,
+    "assessmentMethod": "Individual Assignments with Viva",
+    "overview": "An 18-month Higher National Diploma in Artificial Intelligence offered by BIET’s Faculty of Computing. The programme provides comprehensive training across machine learning, data science, deep learning, generative AI applications, and emerging AI technologies, preparing students for progression to top-up degree programmes.",
+    "progressionOpportunities": [
+      "Top-Up Degree Programmes"
+    ],
+    "entryRequirements": [
+      "BIET Diploma in Computing.",
+      "Three A/L passes in any stream.",
+      "Two A/L passes in Science/Technology.",
+      "Equivalent national or international IT qualifications (120 UK Credits).",
+      "Pending A/L results, subject to conditions:\n• O/L Mathematics – C\n• O/L English – C"
+    ],
+    "whatYouWillLearn": [
+      "HD103ET: Introduction to Programming (Java)",
+      "HD101ET/ME: Mathematics",
+      "SEC01201: System Analysis and Designing",
+      "SEC02201: Professional Practice",
+      "SEC03202: Database Management System (SQL)",
+      "AIC01202: Fundamental of Artificial Intelligence",
+      "AIC02202: Machine Learning (Python)",
+      "AIC03202: Data Science (Python)",
+      "AIC04203: Deep Learning",
+      "AIC05203: Generative AI Applications",
+      "AIC06203: Emerging AI Technology (CV/NLP/RML)",
+      "SEC10203: Project Design and Development"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "HD103ET",
+        "title": "Introduction to Programming (Java)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "HD101ET/ME",
+        "title": "Mathematics",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "SEC01201",
+        "title": "System Analysis and Designing",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "SEC02201",
+        "title": "Professional Practice",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "SEC03202",
+        "title": "Database Management System (SQL)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "AIC01202",
+        "title": "Fundamental of Artificial Intelligence",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "AIC02202",
+        "title": "Machine Learning (Python)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "AIC03202",
+        "title": "Data Science (Python)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 9,
+        "code": "AIC04203",
+        "title": "Deep Learning",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 10,
+        "code": "AIC05203",
+        "title": "Generative AI Applications",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 11,
+        "code": "AIC06203",
+        "title": "Emerging AI Technology (CV/NLP/RML)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 12,
+        "code": "SEC10203",
+        "title": "Project Design and Development",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "HD103ET: Introduction to Programming (Java) (20 Credits - 1st Semester)",
+      "HD101ET/ME: Mathematics (20 Credits - 1st Semester)",
+      "SEC01201: System Analysis and Designing (20 Credits - 1st Semester)",
+      "SEC02201: Professional Practice (20 Credits - 1st Semester)"
+    ],
+    "coreModulesYear2": [
+      "SEC03202: Database Management System (SQL) (20 Credits - 2nd Semester)",
+      "AIC01202: Fundamental of Artificial Intelligence (20 Credits - 2nd Semester)",
+      "AIC02202: Machine Learning (Python) (20 Credits - 2nd Semester)",
+      "AIC03202: Data Science (Python) (20 Credits - 2nd Semester)"
+    ],
+    "coreModulesYear3": [
+      "AIC04203: Deep Learning (20 Credits - 3rd Semester)",
+      "AIC05203: Generative AI Applications (20 Credits - 3rd Semester)",
+      "AIC06203: Emerging AI Technology (CV/NLP/RML) (20 Credits - 3rd Semester)",
+      "SEC10203: Project Design and Development (20 Credits - 3rd Semester)"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "1st Semester: Computing Foundations & Professional Systems (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 1st Semester modules covering Java programming, mathematics for computing, systems analysis, and professional engineering practice.",
+        "modules": [
+          {
+            "code": "HD103ET",
+            "name": "Introduction to Programming (Java)",
+            "credits": 20,
+            "description": "Core object-oriented programming principles, syntax, data structures, and algorithmic implementation using Java."
+          },
+          {
+            "code": "HD101ET/ME",
+            "name": "Mathematics",
+            "credits": 20,
+            "description": "Core discrete mathematics, calculus, linear algebra, matrices, and analytical methods for computing."
+          },
+          {
+            "code": "SEC01201",
+            "name": "System Analysis and Designing",
+            "credits": 20,
+            "description": "Core systems development lifecycle, requirements engineering, architectural modelling, and UML design."
+          },
+          {
+            "code": "SEC02201",
+            "name": "Professional Practice",
+            "credits": 20,
+            "description": "Core ethics, legal compliance, project collaboration, communication, and industry standards."
+          }
+        ]
+      },
+      {
+        "yearTitle": "2nd Semester: Artificial Intelligence & Data Science Foundations (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 2nd Semester modules covering SQL databases, artificial intelligence fundamentals, Python machine learning, and data science.",
+        "modules": [
+          {
+            "code": "SEC03202",
+            "name": "Database Management System (SQL)",
+            "credits": 20,
+            "description": "Core relational database design, normalization, structured query language (SQL), and data integrity."
+          },
+          {
+            "code": "AIC01202",
+            "name": "Fundamental of Artificial Intelligence",
+            "credits": 20,
+            "description": "Core concepts of intelligent agents, heuristic search, knowledge representation, and reasoning systems."
+          },
+          {
+            "code": "AIC02202",
+            "name": "Machine Learning (Python)",
+            "credits": 20,
+            "description": "Core supervised and unsupervised learning algorithms, regression, classification, and clustering using Python."
+          },
+          {
+            "code": "AIC03202",
+            "name": "Data Science (Python)",
+            "credits": 20,
+            "description": "Core data analysis, visualization, statistical exploration, pandas, numpy, and data pipeline processing in Python."
+          }
+        ]
+      },
+      {
+        "yearTitle": "3rd Semester: Advanced AI, Deep Learning & Capstone Development (2026/27)",
+        "level": "Level 5 / 80 Credits",
+        "credits": 80,
+        "description": "Core 3rd Semester modules covering neural networks, deep learning, generative AI applications, computer vision/NLP/reinforcement learning, and capstone project design.",
+        "modules": [
+          {
+            "code": "AIC04203",
+            "name": "Deep Learning",
+            "credits": 20,
+            "description": "Core artificial neural networks, convolutional networks (CNNs), recurrent models, and model optimization."
+          },
+          {
+            "code": "AIC05203",
+            "name": "Generative AI Applications",
+            "credits": 20,
+            "description": "Core generative models, prompt engineering architectures, transformer mechanisms, and generative tool integration."
+          },
+          {
+            "code": "AIC06203",
+            "name": "Emerging AI Technology (CV/NLP/RML)",
+            "credits": 20,
+            "description": "Core computer vision, natural language processing, reinforcement machine learning, and emerging frontiers."
+          },
+          {
+            "code": "SEC10203",
+            "name": "Project Design and Development",
+            "credits": 20,
+            "description": "Comprehensive capstone engineering project encompassing requirements, design, implementation, evaluation, and viva."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Top-Up Degree Programmes",
+      "Artificial Intelligence Specialist",
+      "Machine Learning Engineer",
+      "Data Scientist"
+    ],
+    "industrySectors": [
+      "Top-Up Degree Pathways",
+      "Artificial Intelligence & Cognitive Computing",
+      "Data Science & Analytics",
+      "Intelligent Automation & Robotics"
+    ],
+    "laboratories": [
+      "AI & Machine Learning High-Performance Computing Suite",
+      "Data Science & Python Prototyping Laboratory",
+      "Robotics & Computer Vision Experimentation Lab",
+      "Cloud Computing & Database Development Lab"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1555255707-c07966088b7b'),
+        "caption": "Deep learning models, neural training benchmarks, and computational data exploration.",
+        "category": "Deep Learning"
+      },
+      {
+        "url": photo('photo-1531746790731-6c087fecd65a'),
+        "caption": "Computer vision, robotics perception, and automated intelligent systems.",
+        "category": "Computer Vision & Robotics"
+      }
+    ]
+  },
+  {
+    "id": "hnd-cyber-security-digital-forensics",
+    "title": "Higher National Diploma in Cyber Security and Digital Forensics",
+    "category": "computing",
+    "school": "Faculty of Computing",
+    "qualification": "Higher National Diploma (HND)",
+    "awardingBodyPlaceholder": "British Institute of Engineering Technology (BIET)",
+    "affiliatedInstitution": "TVEC (Pending)",
+    "duration": "18 Months",
+    "studyMode": "On-campus (face to face)",
+    "studySchedule": "2 days per Week",
+    "intakes": [
+      "5th March 2027",
+      "19th September 2027"
+    ],
+    "imageSvgType": "cyber",
+    "imageUrl": photo('photo-1550751827-4bd374c3f58b'),
+    "heroImageUrl": photo('photo-1563986768609-322da13575f3'),
+    "sampleBadgeNote": "",
+    "totalCredits": "240 Credits",
+    "moduleCount": 12,
+    "assessmentMethod": "Individual Assignments with Viva",
+    "overview": "An 18-month Higher National Diploma in Cyber Security and Digital Forensics offered by BIET’s Faculty of Computing. Delivered on-campus (face to face) across 2 days per week, the programme covers cyber security fundamentals, threat intelligence, database security, ethical hacking, digital forensics, cryptography, and network defense.",
+    "progressionOpportunities": [
+      "Top - Up Degree Programmes"
+    ],
+    "entryRequirements": [
+      "BIET Diploma in Computing",
+      "A/L 3 passes (Any Stream)",
+      "A/L 2 passes (Science/Technology)",
+      "Equivalent national or international IT qualifications (120 Credits UK)",
+      "Pending A/L result, subject to conditions: O/L result (Maths - C & English - C)"
+    ],
+    "whatYouWillLearn": [
+      "HD103ET: Introduction to Programming",
+      "HD101ET/ME: Engineering Mathematics",
+      "CYC01201: Cyber Security Fundamentals and Emerging Threats",
+      "SEC02201: Professional Practice",
+      "CYC02202: Database and Application Security",
+      "CYC03202: Mobile and Internet of Things Security",
+      "CYC04202: Introduction to Ethical Hacking",
+      "CYC05202: Information Security Management",
+      "CYC06203: Digital Investigation and Forensics",
+      "CYC07203: Cryptography",
+      "CYC08203: Network and Cloud Security",
+      "SEC10203: Project Design and Development"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "HD103ET",
+        "title": "Introduction to Programming",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "HD101ET/ME",
+        "title": "Engineering Mathematics",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "CYC01201",
+        "title": "Cyber Security Fundamentals and Emerging Threats",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "SEC02201",
+        "title": "Professional Practice",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "CYC02202",
+        "title": "Database and Application Security",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "CYC03202",
+        "title": "Mobile and Internet of Things Security",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "CYC04202",
+        "title": "Introduction to Ethical Hacking",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "CYC05202",
+        "title": "Information Security Management",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 9,
+        "code": "CYC06203",
+        "title": "Digital Investigation and Forensics",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 10,
+        "code": "CYC07203",
+        "title": "Cryptography",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 11,
+        "code": "CYC08203",
+        "title": "Network and Cloud Security",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 12,
+        "code": "SEC10203",
+        "title": "Project Design and Development",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "HD103ET: Introduction to Programming (20 Credits - 2026/27 – 1st Semester)",
+      "HD101ET/ME: Engineering Mathematics (20 Credits - 2026/27 – 1st Semester)",
+      "CYC01201: Cyber Security Fundamentals and Emerging Threats (20 Credits - 2026/27 – 1st Semester)",
+      "SEC02201: Professional Practice (20 Credits - 2026/27 – 1st Semester)"
+    ],
+    "coreModulesYear2": [
+      "CYC02202: Database and Application Security (20 Credits - 2026/27 – 2nd Semester)",
+      "CYC03202: Mobile and Internet of Things Security (20 Credits - 2026/27 – 2nd Semester)",
+      "CYC04202: Introduction to Ethical Hacking (20 Credits - 2026/27 – 2nd Semester)",
+      "CYC05202: Information Security Management (20 Credits - 2026/27 – 2nd Semester)"
+    ],
+    "coreModulesYear3": [
+      "CYC06203: Digital Investigation and Forensics (20 Credits - 2026/27 – 3rd Semester)",
+      "CYC07203: Cryptography (20 Credits - 2026/27 – 3rd Semester)",
+      "CYC08203: Network and Cloud Security (20 Credits - 2026/27 – 3rd Semester)",
+      "SEC10203: Project Design and Development (20 Credits - 2026/27 – 3rd Semester)"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "1st Semester: Cyber Security Foundations & Systems (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 1st Semester modules covering foundational programming, engineering mathematics, emerging cyber threat analysis, and professional engineering practice.",
+        "modules": [
+          {
+            "code": "HD103ET",
+            "name": "Introduction to Programming",
+            "credits": 20,
+            "description": "Core programming logic, structured coding, control workflows, and algorithmic development."
+          },
+          {
+            "code": "HD101ET/ME",
+            "name": "Engineering Mathematics",
+            "credits": 20,
+            "description": "Core discrete mathematics, algebraic systems, calculus, and computational modeling."
+          },
+          {
+            "code": "CYC01201",
+            "name": "Cyber Security Fundamentals and Emerging Threats",
+            "credits": 20,
+            "description": "Core principles of security posture, attack vectors, vulnerabilities, and emerging cyber risks."
+          },
+          {
+            "code": "SEC02201",
+            "name": "Professional Practice",
+            "credits": 20,
+            "description": "Core ethics, legal compliance, project collaboration, communication, and industry standards."
+          }
+        ]
+      },
+      {
+        "yearTitle": "2nd Semester: Application, IoT & Information Security (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 2nd Semester modules covering database security, connected device (IoT) defense, penetration testing fundamentals, and information risk management.",
+        "modules": [
+          {
+            "code": "CYC02202",
+            "name": "Database and Application Security",
+            "credits": 20,
+            "description": "Core database hardening, injection prevention, secure software practices, and data access policies."
+          },
+          {
+            "code": "CYC03202",
+            "name": "Mobile and Internet of Things Security",
+            "credits": 20,
+            "description": "Core firmware integrity, embedded device security, wireless communication defense, and sensor privacy."
+          },
+          {
+            "code": "CYC04202",
+            "name": "Introduction to Ethical Hacking",
+            "credits": 20,
+            "description": "Core reconnaissance, vulnerability assessment, penetration methodologies, and offensive security analysis."
+          },
+          {
+            "code": "CYC05202",
+            "name": "Information Security Management",
+            "credits": 20,
+            "description": "Core governance, ISO/IEC standards, compliance frameworks, security policies, and incident response."
+          }
+        ]
+      },
+      {
+        "yearTitle": "3rd Semester: Forensics, Cryptography & Capstone Project (2026/27)",
+        "level": "Level 5 / 80 Credits",
+        "credits": 80,
+        "description": "Core 3rd Semester modules covering evidentiary forensic analysis, cryptographic algorithms, cloud protection, and comprehensive capstone project design.",
+        "modules": [
+          {
+            "code": "CYC06203",
+            "name": "Digital Investigation and Forensics",
+            "credits": 20,
+            "description": "Core digital forensics methods, chain of custody, evidence acquisition, memory analysis, and investigation reports."
+          },
+          {
+            "code": "CYC07203",
+            "name": "Cryptography",
+            "credits": 20,
+            "description": "Core symmetric and asymmetric encryption, hashing, digital signatures, public key infrastructure (PKI), and zero-knowledge proofs."
+          },
+          {
+            "code": "CYC08203",
+            "name": "Network and Cloud Security",
+            "credits": 20,
+            "description": "Core perimeter defense, intrusion prevention, cloud container security, VPC configurations, and zero trust models."
+          },
+          {
+            "code": "SEC10203",
+            "name": "Project Design and Development",
+            "credits": 20,
+            "description": "Comprehensive capstone engineering project encompassing requirements, design, implementation, evaluation, and viva."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Top - Up Degree Programmes",
+      "Cyber Security Analyst",
+      "Digital Forensics Investigator",
+      "Information Security Specialist"
+    ],
+    "industrySectors": [
+      "Top - Up Degree Pathways",
+      "Cyber Security & Digital Forensics",
+      "Network Defense & Information Security",
+      "Incident Response & Forensics Operations"
+    ],
+    "laboratories": [
+      "Digital Forensics & Evidence Extraction Laboratory",
+      "Ethical Hacking & Penetration Testing Sandbox",
+      "Network Security Operations & Cloud Defense Center",
+      "Cryptography & Hardware Security Prototyping Suite"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1526374965328-7f61d4dc18c5'),
+        "caption": "Digital forensics investigations, binary extraction, and evidentiary data recovery.",
+        "category": "Digital Forensics"
+      },
+      {
+        "url": photo('photo-1510511459019-5dda7724fd87'),
+        "caption": "Network defense suites, threat intelligence, and secure cloud infrastructure.",
+        "category": "Network & Cloud Security"
+      }
+    ]
+  },
+  {
+    "id": "hnd-software-engineering",
+    "title": "Higher National Diploma in Software Engineering (SE)",
+    "category": "computing",
+    "school": "Faculty of Computing",
+    "qualification": "Higher National Diploma (HND)",
+    "awardingBodyPlaceholder": "British Institute of Engineering Technology (BIET)",
+    "affiliatedInstitution": "TVEC (Pending)",
+    "duration": "18 Months",
+    "studyMode": "On-campus (face to face)",
+    "studySchedule": "2 days per Week",
+    "intakes": [
+      "5th March 2027",
+      "19th September 2027"
+    ],
+    "imageSvgType": "software",
+    "imageUrl": photo('photo-1522071820081-009f0129c71c'),
+    "heroImageUrl": photo('photo-1607799279861-4dd421887fb3'),
+    "sampleBadgeNote": "",
+    "totalCredits": "240 Credits",
+    "moduleCount": 12,
+    "assessmentMethod": "Individual Assignments with Viva",
+    "overview": "An 18-month Higher National Diploma in Software Engineering (SE) offered by BIET’s Faculty of Computing. Delivered on-campus (face to face) across 2 days per week, the programme covers foundational programming, mathematics, systems analysis, database management, advanced OOP, algorithms, full-stack web and mobile application engineering, IoT, and capstone project development.",
+    "progressionOpportunities": [
+      "Top - Up Degree Programmes"
+    ],
+    "entryRequirements": [
+      "BIET Diploma in Computing",
+      "A/L 3 passes (Any Stream)",
+      "A/L 2 passes (Science/Technology)",
+      "Equivalent national or international IT qualifications (120 Credits UK)",
+      "Pending A/L result, subject to conditions: O/L result (Maths - C & English - C)"
+    ],
+    "whatYouWillLearn": [
+      "HD103ET: Introduction to Programming",
+      "HD101ET/ME: Mathematics",
+      "SEC01201: System Analysis and Designing",
+      "SEC02201: Professional Practice",
+      "SEC03202: Database Management System",
+      "SEC04202: Advanced Programming (Java - OOP…)",
+      "SEC05202: Data Structures and Algorithms (Java/C++)",
+      "SEC06202: Web Design and Development (UI,JS+PhP+Database, web hosting)",
+      "SEC07203: Mobile Applications Development (UI,Kotlin/Java)",
+      "SEC08203: Advanced Web Application Development (MERN, API, Recommendation Systems,Docker)",
+      "SEC09203: Internet of Things (Database Connections, IoT Dashboard)",
+      "SEC10203: Project Design and Development"
+    ],
+    "allModules": [
+      {
+        "no": 1,
+        "code": "HD103ET",
+        "title": "Introduction to Programming",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 2,
+        "code": "HD101ET/ME",
+        "title": "Mathematics",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 3,
+        "code": "SEC01201",
+        "title": "System Analysis and Designing",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 4,
+        "code": "SEC02201",
+        "title": "Professional Practice",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "1st Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 5,
+        "code": "SEC03202",
+        "title": "Database Management System",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 6,
+        "code": "SEC04202",
+        "title": "Advanced Programming (Java - OOP…)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 7,
+        "code": "SEC05202",
+        "title": "Data Structures and Algorithms (Java/C++)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 8,
+        "code": "SEC06202",
+        "title": "Web Design and Development (UI,JS+PhP+Database, web hosting)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "2nd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 9,
+        "code": "SEC07203",
+        "title": "Mobile Applications Development (UI,Kotlin/Java)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 10,
+        "code": "SEC08203",
+        "title": "Advanced Web Application Development (MERN, API, Recommendation Systems,Docker)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 11,
+        "code": "SEC09203",
+        "title": "Internet of Things (Database Connections, IoT Dashboard)",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      },
+      {
+        "no": 12,
+        "code": "SEC10203",
+        "title": "Project Design and Development",
+        "credits": 20,
+        "academicYear": "2026/27",
+        "semester": "3rd Semester",
+        "moduleType": "Core"
+      }
+    ],
+    "coreModulesYear1": [
+      "HD103ET: Introduction to Programming (20 Credits - 2026/27 – 1st Semester)",
+      "HD101ET/ME: Mathematics (20 Credits - 2026/27 – 1st Semester)",
+      "SEC01201: System Analysis and Designing (20 Credits - 2026/27 – 1st Semester)",
+      "SEC02201: Professional Practice (20 Credits - 2026/27 – 1st Semester)"
+    ],
+    "coreModulesYear2": [
+      "SEC03202: Database Management System (20 Credits - 2026/27 – 2nd Semester)",
+      "SEC04202: Advanced Programming (Java - OOP…) (20 Credits - 2026/27 – 2nd Semester)",
+      "SEC05202: Data Structures and Algorithms (Java/C++) (20 Credits - 2026/27 – 2nd Semester)",
+      "SEC06202: Web Design and Development (UI,JS+PhP+Database, web hosting) (20 Credits - 2026/27 – 2nd Semester)"
+    ],
+    "coreModulesYear3": [
+      "SEC07203: Mobile Applications Development (UI,Kotlin/Java) (20 Credits - 2026/27 – 3rd Semester)",
+      "SEC08203: Advanced Web Application Development (MERN, API, Recommendation Systems,Docker) (20 Credits - 2026/27 – 3rd Semester)",
+      "SEC09203: Internet of Things (Database Connections, IoT Dashboard) (20 Credits - 2026/27 – 3rd Semester)",
+      "SEC10203: Project Design and Development (20 Credits - 2026/27 – 3rd Semester)"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "1st Semester: Programming Foundations & Systems (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 1st Semester modules covering foundational programming, mathematics, systems analysis and design, and professional engineering practice.",
+        "modules": [
+          {
+            "code": "HD103ET",
+            "name": "Introduction to Programming",
+            "credits": 20,
+            "description": "Core programming logic, structured coding, control workflows, and algorithmic development."
+          },
+          {
+            "code": "HD101ET/ME",
+            "name": "Mathematics",
+            "credits": 20,
+            "description": "Core discrete mathematics, calculus, algebraic structures, and analytical computing foundations."
+          },
+          {
+            "code": "SEC01201",
+            "name": "System Analysis and Designing",
+            "credits": 20,
+            "description": "Core systems development lifecycle, requirements engineering, architectural modelling, and UML design."
+          },
+          {
+            "code": "SEC02201",
+            "name": "Professional Practice",
+            "credits": 20,
+            "description": "Core ethics, legal compliance, project collaboration, communication, and industry standards."
+          }
+        ]
+      },
+      {
+        "yearTitle": "2nd Semester: OOP, Data Structures & Web Development (2026/27)",
+        "level": "Level 4 / 80 Credits",
+        "credits": 80,
+        "description": "Core 2nd Semester modules covering database management systems, advanced object-oriented programming, data structures, and web development.",
+        "modules": [
+          {
+            "code": "SEC03202",
+            "name": "Database Management System",
+            "credits": 20,
+            "description": "Core relational database architecture, SQL queries, normalization, and database administration."
+          },
+          {
+            "code": "SEC04202",
+            "name": "Advanced Programming (Java - OOP…)",
+            "credits": 20,
+            "description": "Core advanced object-oriented paradigms, encapsulation, polymorphism, inheritance, and patterns."
+          },
+          {
+            "code": "SEC05202",
+            "name": "Data Structures and Algorithms (Java/C++)",
+            "credits": 20,
+            "description": "Core algorithmic complexity, trees, graphs, sorting, searching, and memory optimization."
+          },
+          {
+            "code": "SEC06202",
+            "name": "Web Design and Development (UI,JS+PhP+Database, web hosting)",
+            "credits": 20,
+            "description": "Core user interface design, JavaScript scripting, PHP backend, database integration, and hosting."
+          }
+        ]
+      },
+      {
+        "yearTitle": "3rd Semester: Mobile, Advanced Web, IoT & Capstone (2026/27)",
+        "level": "Level 5 / 80 Credits",
+        "credits": 80,
+        "description": "Core 3rd Semester modules covering mobile application development, modern full-stack web architectures, IoT systems, and capstone project development.",
+        "modules": [
+          {
+            "code": "SEC07203",
+            "name": "Mobile Applications Development (UI,Kotlin/Java)",
+            "credits": 20,
+            "description": "Core native mobile interface design, lifecycle management, and application logic in Kotlin and Java."
+          },
+          {
+            "code": "SEC08203",
+            "name": "Advanced Web Application Development (MERN, API, Recommendation Systems,Docker)",
+            "credits": 20,
+            "description": "Core full-stack MERN stack engineering, REST/GraphQL APIs, recommendation systems, and Docker containers."
+          },
+          {
+            "code": "SEC09203",
+            "name": "Internet of Things (Database Connections, IoT Dashboard)",
+            "credits": 20,
+            "description": "Core embedded device telemetry, real-time sensor integration, database connections, and IoT dashboards."
+          },
+          {
+            "code": "SEC10203",
+            "name": "Project Design and Development",
+            "credits": 20,
+            "description": "Comprehensive capstone engineering project encompassing requirements, design, implementation, evaluation, and viva."
+          }
+        ]
+      }
+    ],
+    "careerPathways": [
+      "Top - Up Degree Programmes",
+      "Software Engineer",
+      "Full-Stack Web Developer",
+      "Mobile Application Developer"
+    ],
+    "industrySectors": [
+      "Top - Up Degree Pathways",
+      "Software Engineering & Cloud Computing",
+      "Mobile & Web Application Development",
+      "Enterprise Systems & IoT Solutions"
+    ],
+    "laboratories": [
+      "Full-Stack Software Development Laboratory",
+      "Mobile Application Engineering Studio",
+      "Cloud Architecture & Docker Containerization Lab",
+      "IoT Sensor & Connected Systems Prototyping Suite"
+    ],
+    "galleryImages": [
+      {
+        "url": photo('photo-1517694712202-14dd9538aa97'),
+        "caption": "Full-stack software engineering workstations, code reviews, and containerized deployments.",
+        "category": "Full-Stack Development"
+      },
+      {
+        "url": photo('photo-1555066931-4365d14bab8c'),
+        "caption": "Advanced programming suites for mobile applications, API architectures, and algorithms.",
+        "category": "Mobile & Cloud Systems"
+      }
+    ]
+  },
+  {
+    "id": "software-engineering",
+    "title": "Software Engineering & Cloud Computing",
+    "category": "computing",
+    "school": "School of Computing & IT",
+    "qualification": "BSc (Hons) / Higher Diploma",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time",
+    "studyMode": "Full-Time / Hybrid Delivery",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "software",
+    "imageUrl": photo('photo-1555066931-4365d14bab8c'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "Bridges deep algorithmic foundations with enterprise software architecture, cloud-native deployments (AWS/Azure/GCP), microservices engineering, DevOps automation, and secure API infrastructure.",
+    "whatYouWillLearn": [
+      "Design scalable microservice architectures, REST/GraphQL APIs, and event-driven distributed systems.",
+      "Master data structures, algorithms, asymptotic analysis, and relational/NoSQL database management.",
+      "Deploy containerized applications using Docker, Kubernetes, and automated CI/CD pipelines.",
+      "Implement defensive software engineering, OAuth2/OIDC security, and zero-trust authentication.",
+      "Build modern web interfaces and cross-platform native applications using contemporary frameworks."
+    ],
+    "coreModulesYear1": [
+      "Object-Oriented Programming (Java / Python)",
+      "Data Structures, Algorithms & Computational Complexity",
+      "Database Architecture & SQL Systems",
+      "Web Technologies & Interactive Frontends"
+    ],
+    "coreModulesYear2": [
+      "Distributed Systems & Cloud Infrastructure (AWS / Azure)",
+      "Software Architecture & Design Patterns",
+      "DevOps, CI/CD & Automated Testing Methodologies",
+      "Mobile Application Development & UI/UX Engineering"
+    ],
+    "coreModulesYear3": [
+      "Enterprise Microservices Architecture",
+      "Applied Machine Learning & Big Data Systems",
+      "Cybersecurity Principles & Secure Coding",
+      "Enterprise Software Capstone Project"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Programming Foundations & Data Structures",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Object-oriented programming, data structures, relational modeling, and interactive web architecture.",
+        "modules": [
+          {
+            "code": "SWE101",
+            "name": "Object-Oriented Programming (Java & Python)",
+            "credits": 20,
+            "description": "Inheritance, polymorphism, encapsulation, memory structures, and test-driven design."
+          },
+          {
+            "code": "SWE102",
+            "name": "Data Structures & Algorithmic Complexity",
+            "credits": 20,
+            "description": "Trees, graphs, hash tables, sorting algorithms, and Big-O computational efficiency."
+          },
+          {
+            "code": "SWE103",
+            "name": "Relational & NoSQL Database Systems",
+            "credits": 20,
+            "description": "Relational normalization, SQL indexing, ACID properties, MongoDB, and Redis caching."
+          },
+          {
+            "code": "SWE104",
+            "name": "Full-Stack Web Development",
+            "credits": 20,
+            "description": "HTML5, modern CSS, TypeScript, React components, and Node.js RESTful API backends."
+          },
+          {
+            "code": "SWE105",
+            "name": "Computer Systems Architecture & OS Internals",
+            "credits": 20,
+            "description": "CPU pipelining, virtual memory, process concurrency, threads, and Linux command line."
+          },
+          {
+            "code": "SWE106",
+            "name": "Discrete Mathematics for Computing",
+            "credits": 20,
+            "description": "Set theory, propositional logic, graph theory, combinatorics, and proof techniques."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Cloud Infrastructure, DevOps & Architecture",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "Cloud systems deployment, container orchestration, clean code design patterns, and automated pipelines.",
+        "modules": [
+          {
+            "code": "SWE201",
+            "name": "Cloud Computing & Serverless Architectures",
+            "credits": 20,
+            "description": "AWS/Azure services, cloud storage, IAM policies, and infrastructure-as-code (Terraform)."
+          },
+          {
+            "code": "SWE202",
+            "name": "Enterprise Software Architecture & Design Patterns",
+            "credits": 20,
+            "description": "GoF design patterns, domain-driven design (DDD), event sourcing, and CQRS."
+          },
+          {
+            "code": "SWE203",
+            "name": "DevOps & Continuous Delivery (CI/CD)",
+            "credits": 20,
+            "description": "Docker containerization, Kubernetes clusters, GitHub Actions, and automated unit/integration tests."
+          },
+          {
+            "code": "SWE204",
+            "name": "Mobile Application Engineering",
+            "credits": 20,
+            "description": "Cross-platform mobile development with React Native, local state sync, and native APIs."
+          },
+          {
+            "code": "SWE205",
+            "name": "Software Quality Assurance & Automated Testing",
+            "credits": 20,
+            "description": "Selenium, Cypress, property-based testing, performance profiling, and code coverage."
+          },
+          {
+            "code": "SWE206",
+            "name": "Distributed Systems & Messaging Queues",
+            "credits": 20,
+            "description": "CAP theorem, Kafka event streams, RabbitMQ, RPC protocols, and network partition resilience."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Enterprise Microservices & Capstone Project",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Individual full-stack enterprise capstone build, scalable machine learning backends, and cybersecurity.",
+        "modules": [
+          {
+            "code": "SWE301",
+            "name": "Enterprise Software Capstone Project",
+            "credits": 40,
+            "description": "Full-scale design, development, deployment, and testing of a production-grade software solution."
+          },
+          {
+            "code": "SWE302",
+            "name": "Enterprise Microservices & Cloud Native Systems",
+            "credits": 20,
+            "description": "Service meshes (Istio), API gateways, distributed tracing, and resilience patterns."
+          },
+          {
+            "code": "SWE303",
+            "name": "Applied Machine Learning & Big Data Pipelines",
+            "credits": 20,
+            "description": "Feature engineering, model training with Scikit-Learn, PyTorch inference, and Spark streaming."
+          },
+          {
+            "code": "SWE304",
+            "name": "Secure Software Development & AppSec",
+            "credits": 20,
+            "description": "OWASP Top 10 mitigation, cryptographic hashing, JWT security, and static code analysis."
+          },
+          {
+            "code": "SWE305",
+            "name": "Technology Entrepreneurship & Product Management",
+            "credits": 20,
+            "description": "Agile/Scrum ceremonies, product roadmapping, user telemetry, and technical startup economics."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Passes in any Sri Lankan G.C.E. A/L stream (Physical Science, Bio Science, Technology, or Commerce), OR",
+      "Cambridge or Edexcel International A-Levels in relevant subjects, OR",
+      "Approved Diploma in Information Technology [Entry Benchmark Placeholder].",
+      "Mathematics credit at Ordinary Level examination."
+    ],
+    "careerPathways": [
+      "Enterprise Software Engineer",
+      "Cloud Solutions Architect (AWS / Azure)",
+      "Full-Stack Web & Mobile Developer",
+      "DevOps & Site Reliability Engineer (SRE)",
+      "Distributed Systems Backend Engineer"
+    ],
+    "industrySectors": [
+      "Enterprise Software Vendors (SaaS)",
+      "FinTech, Banking & Digital Payments",
+      "Cloud Infrastructure & Hosting Providers",
+      "Telecommunications & E-Commerce Platforms"
+    ],
+    "laboratories": [
+      "High-Performance Cloud & Cluster Computing Lab",
+      "Collaborative Agile Software Studio",
+      "Virtualization & Linux Server Test Sandbox",
+      "Usability & Mobile UI/UX Testing Suite"
+    ]
+  },
+  {
+    "id": "cyber-security",
+    "title": "Cyber Security & Network Engineering",
+    "category": "computing",
+    "school": "School of Computing & IT",
+    "qualification": "BSc (Hons) / Higher Diploma",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time",
+    "studyMode": "Full-Time",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "cyber",
+    "imageUrl": photo('photo-1563986768609-322da13575f3'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "A specialized, defense-oriented qualification covering network architecture, routing protocols, ethical penetration testing, digital forensics, incident response, and institutional security governance.",
+    "whatYouWillLearn": [
+      "Configure enterprise routing and switching infrastructure using industry-standard Cisco hardware.",
+      "Execute vulnerability assessments and ethical penetration testing across web and network environments.",
+      "Conduct digital forensics investigations, volatile memory analysis, and malware triage.",
+      "Implement Zero-Trust network segmentation, enterprise firewalls, and Intrusion Detection Systems (IDS/IPS).",
+      "Formulate ISO/IEC 27001 information security governance, compliance policies, and incident response playbooks."
+    ],
+    "coreModulesYear1": [
+      "Computer Networking & Routing Protocols (Cisco Architecture)",
+      "Operating Systems Fundamentals (Linux/Unix & Windows)",
+      "Introduction to Cryptography & Data Protection",
+      "Scripting for Network Automation (Python & Bash)"
+    ],
+    "coreModulesYear2": [
+      "Network Security, Firewalls & Intrusion Detection",
+      "Ethical Hacking & Vulnerability Assessment",
+      "Digital Forensics & Malware Incident Investigation",
+      "Enterprise Directory & Identity Access Management"
+    ],
+    "coreModulesYear3": [
+      "Cloud Security Architecture & Zero-Trust Models",
+      "Information Security Governance, Risk & Compliance",
+      "Advanced Threat Hunting & Defensive Security Operations",
+      "Cyber Security Research Thesis & Defense"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Networking Basics, Linux & Cryptography",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Covers TCP/IP models, Cisco routing/switching configurations, Linux system administration, and encryption fundamentals.",
+        "modules": [
+          {
+            "code": "SEC101",
+            "name": "Computer Networking & CCNA Architecture",
+            "credits": 20,
+            "description": "OSI layers, IPv4/IPv6 subnetting, VLANs, OSPF routing, and switch port security."
+          },
+          {
+            "code": "SEC102",
+            "name": "Linux System Administration & Shell Scripting",
+            "credits": 20,
+            "description": "File system permissions, daemon management, Bash scripting, and secure SSH configuration."
+          },
+          {
+            "code": "SEC103",
+            "name": "Fundamentals of Cryptography & Hashing",
+            "credits": 20,
+            "description": "Symmetric/asymmetric algorithms (AES, RSA, ECC), SHA hashing, and Public Key Infrastructure (PKI)."
+          },
+          {
+            "code": "SEC104",
+            "name": "Python Scripting for Security Automation",
+            "credits": 20,
+            "description": "Socket programming, port scanning scripts, log parsing, and automated vulnerability checks."
+          },
+          {
+            "code": "SEC105",
+            "name": "Computer Architecture & Assembly Basics",
+            "credits": 20,
+            "description": "x86_64 architecture, register flags, stack frames, buffer overflows, and memory segmentation."
+          },
+          {
+            "code": "SEC106",
+            "name": "Cyber Security Ethics & Legal Frameworks",
+            "credits": 20,
+            "description": "Computer Crimes Act, GDPR/data protection regulations, and professional code of ethics."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Ethical Hacking, Firewalls & Digital Forensics",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "Hands-on offensive penetration testing techniques, enterprise perimeter defense, and forensic evidence extraction.",
+        "modules": [
+          {
+            "code": "SEC201",
+            "name": "Ethical Hacking & Penetration Testing",
+            "credits": 20,
+            "description": "Reconnaissance, Nmap, Metasploit, exploit crafting, privilege escalation, and lateral movement."
+          },
+          {
+            "code": "SEC202",
+            "name": "Network Perimeter Defense & Next-Gen Firewalls",
+            "credits": 20,
+            "description": "Stateful packet inspection, Snort IDS/IPS rules, VPN tunnels, and DMZ network topology."
+          },
+          {
+            "code": "SEC203",
+            "name": "Digital Forensics & Artifact Recovery",
+            "credits": 20,
+            "description": "Chain of custody, disk imaging (EnCase/Autopsy), registry analysis, and deleted file recovery."
+          },
+          {
+            "code": "SEC204",
+            "name": "Malware Analysis & Reverse Engineering",
+            "credits": 20,
+            "description": "Static and dynamic analysis, sandbox profiling, disassemblers (Ghidra), and ransomware indicators."
+          },
+          {
+            "code": "SEC205",
+            "name": "Enterprise Identity & Directory Services (Active Directory)",
+            "credits": 20,
+            "description": "Kerberos authentication, Group Policies, LDAP, BloodHound auditing, and credential hardening."
+          },
+          {
+            "code": "SEC206",
+            "name": "Web Application Security & OWASP Top 10",
+            "credits": 20,
+            "description": "SQL injection, XSS, CSRF, Burp Suite intercepting proxies, and secure session management."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Cloud Security, SOC Operations & Thesis",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Cloud environment auditing, Security Operations Center (SOC) threat hunting, and final research thesis.",
+        "modules": [
+          {
+            "code": "SEC301",
+            "name": "Cyber Security Research Thesis & Defense",
+            "credits": 40,
+            "description": "Original experimental thesis investigating novel defensive architectures or vulnerability mitigation."
+          },
+          {
+            "code": "SEC302",
+            "name": "Security Operations (SOC) & SIEM Threat Hunting",
+            "credits": 20,
+            "description": "Splunk/Elastic SIEM rule tuning, incident triage, MITRE ATT&CK mapping, and log correlation."
+          },
+          {
+            "code": "SEC303",
+            "name": "Cloud Security Architecture (AWS/Azure)",
+            "credits": 20,
+            "description": "CloudTrail auditing, container security, zero-trust IAM, and serverless runtime defenses."
+          },
+          {
+            "code": "SEC304",
+            "name": "Information Security Governance & ISO 27001",
+            "credits": 20,
+            "description": "Risk assessment matrices, business continuity planning, disaster recovery, and security auditing."
+          },
+          {
+            "code": "SEC305",
+            "name": "Cyber Warfare & Critical Infrastructure Protection",
+            "credits": 20,
+            "description": "SCADA/ICS security, industrial control network threats, and national infrastructure defense."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Passes in any Sri Lankan G.C.E. A/L or Cambridge/Edexcel London A-Levels stream, OR",
+      "Recognized Diploma in Networking / IT [Entry Benchmark Placeholder].",
+      "Pass in G.C.E. O/L Mathematics and English."
+    ],
+    "careerPathways": [
+      "Cyber Security Analyst (SOC Tier 2 / 3)",
+      "Ethical Hacker / Penetration Tester",
+      "Network Security Infrastructure Engineer",
+      "Digital Forensics Investigator",
+      "Information Security Compliance Officer (CISO track)"
+    ],
+    "industrySectors": [
+      "Banking, Financial Services & FinTech",
+      "Telecommunications & Internet Service Providers",
+      "Government Security & Critical Infrastructure",
+      "Specialized Cyber Consulting Practices"
+    ],
+    "laboratories": [
+      "Air-Gapped Cyber Range & Exploit Testing Sandbox",
+      "Cisco Enterprise Networking & Switching Rack Room",
+      "Digital Forensics Hardware Imaging Station",
+      "Security Operations Center (SOC) Simulation Console"
+    ]
+  },
+  {
+    "id": "quantity-surveying",
+    "title": "Quantity Surveying & Commercial Management",
+    "category": "built-environment",
+    "school": "School of Built Environment",
+    "qualification": "BSc (Hons) / Higher National Diploma",
+    "awardingBodyPlaceholder": "[Awarding University / Institutional Partner Placeholder]",
+    "duration": "3 Years Full-Time / 4 Years Part-Time",
+    "studyMode": "Full-Time / Part-Time (Weekend)",
+    "intakes": [
+      "September 2026",
+      "February 2027"
+    ],
+    "imageSvgType": "quantity-surveying",
+    "imageUrl": photo('photo-1503387762-592deb58ef4e'),
+    "sampleBadgeNote": "[Sample Programme Specification - Pending Official BIET Validation]",
+    "overview": "Equips undergraduates with financial, legal, and operational mastery in construction cost modeling, Bill of Quantities (BOQ) preparation, international standard contract law (FIDIC/JCT), and Building Information Modeling (BIM 5D).",
+    "whatYouWillLearn": [
+      "Measure civil engineering, building, and MEP works using international standard methods (NRM2 and CESMM4).",
+      "Draft tender documents, prepare comprehensive Bills of Quantities (BOQs), and conduct cost planning.",
+      "Administer standard construction contracts (FIDIC Red/Yellow Books, JCT) and manage contractual claims.",
+      "Integrate 5D Building Information Modelling (BIM) for real-time quantity takeoff and financial cash flow simulation.",
+      "Conduct value engineering, life-cycle costing, and construction dispute mediation proceedings."
+    ],
+    "coreModulesYear1": [
+      "Construction Technology & Structural Systems",
+      "Principles of Measurement & Bill of Quantities (NRM2/CESMM)",
+      "Introduction to Construction Economics & Cost Modeling",
+      "Built Environment Law & Regulatory Compliance"
+    ],
+    "coreModulesYear2": [
+      "Advanced Measurement for Civil & MEP Works",
+      "Standard Forms of Construction Contracts & Procurement",
+      "Cost Planning, Value Engineering & Estimating",
+      "Building Information Modelling (BIM) for Quantity Surveyors"
+    ],
+    "coreModulesYear3": [
+      "Construction Dispute Resolution, Arbitration & Claims",
+      "Commercial Management & Financial Auditing of Mega Projects",
+      "Sustainability & Life-Cycle Costing in Built Assets",
+      "Professional Practice & Dissertation Thesis"
+    ],
+    "structureBreakdown": [
+      {
+        "yearTitle": "Year 1: Construction Technology, Economics & Law",
+        "level": "FHEQ Level 4",
+        "credits": 120,
+        "description": "Covers sub-structure/superstructure building methods, basic measurement principles, and property law.",
+        "modules": [
+          {
+            "code": "QS101",
+            "name": "Construction Technology: Substructures & Superstructures",
+            "credits": 20,
+            "description": "Foundations, basements, reinforced concrete framing, masonry, and roof envelope systems."
+          },
+          {
+            "code": "QS102",
+            "name": "Principles of Measurement (NRM 1 & 2)",
+            "credits": 20,
+            "description": "Rules of measurement for substructures, masonry, carpentry, and finishes using modern plan takeoffs."
+          },
+          {
+            "code": "QS103",
+            "name": "Micro & Macro Construction Economics",
+            "credits": 20,
+            "description": "Market supply and demand, labor and material pricing trends, and inflation indexing in Sri Lanka."
+          },
+          {
+            "code": "QS104",
+            "name": "Built Environment Law & Law of Contract",
+            "credits": 20,
+            "description": "Contract formation, tort liabilities, building regulations, and statutory urban planning codes."
+          },
+          {
+            "code": "QS105",
+            "name": "Building Services Engineering (MEP)",
+            "credits": 20,
+            "description": "HVAC ducting, sanitary drainage, water supply, and electrical distribution systems."
+          },
+          {
+            "code": "QS106",
+            "name": "Material Science & Specifications Drafting",
+            "credits": 20,
+            "description": "Performance specifications, British Standards (BS EN), and sustainability criteria in construction."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 2: Advanced Measurement, FIDIC & Cost Estimating",
+        "level": "FHEQ Level 5",
+        "credits": 120,
+        "description": "Civil engineering measurement (CESMM4), FIDIC contract conditions, tendering strategies, and 5D BIM.",
+        "modules": [
+          {
+            "code": "QS201",
+            "name": "Advanced Measurement: Civil Works & MEP (CESMM4)",
+            "credits": 20,
+            "description": "Measurement of deep excavations, drainage culverts, bridges, piling, and complex MEP services."
+          },
+          {
+            "code": "QS202",
+            "name": "Standard Forms of Construction Contracts (FIDIC & JCT)",
+            "credits": 20,
+            "description": "Clauses for variations, delays, extension of time (EOT), liquidated damages, and engineer duties."
+          },
+          {
+            "code": "QS203",
+            "name": "Tender Estimating, Bidding Strategy & Pricing",
+            "credits": 20,
+            "description": "Unit rate breakdown for plant, labor, materials, subcontractor markups, and preliminary costs."
+          },
+          {
+            "code": "QS204",
+            "name": "5D BIM & Digital Quantity Takeoff",
+            "credits": 20,
+            "description": "Utilizing CostX, Cubicost, and Revit models for automatic parameter extraction and cost linking."
+          },
+          {
+            "code": "QS205",
+            "name": "Value Engineering & Risk Management",
+            "credits": 20,
+            "description": "Functional cost reduction, workshop facilitation, risk registers, and probabilistic contingency."
+          },
+          {
+            "code": "QS206",
+            "name": "Procurement Strategy & Contract Administration",
+            "credits": 20,
+            "description": "Design-Build, Traditional, Management contracting, and public-private partnerships (PPP)."
+          }
+        ]
+      },
+      {
+        "yearTitle": "Year 3: Commercial Management, Claims & Dissertation",
+        "level": "FHEQ Level 6",
+        "credits": 120,
+        "description": "Commercial auditing of mega infrastructure, dispute adjudication, arbitration law, and dissertation.",
+        "modules": [
+          {
+            "code": "QS301",
+            "name": "Professional Quantity Surveying Dissertation",
+            "credits": 40,
+            "description": "Independent investigative research addressing legal, financial, or technological built environment issues."
+          },
+          {
+            "code": "QS302",
+            "name": "Construction Claims, Delay Analysis & Arbitration",
+            "credits": 20,
+            "description": "Dispute Adjudication Boards (DAB), time impact delay analysis, and international arbitration procedures."
+          },
+          {
+            "code": "QS303",
+            "name": "Commercial Management of Major Infrastructure",
+            "credits": 20,
+            "description": "Interim valuations, cost value reconciliation (CVR), cash flow forecasting, and final accounts."
+          },
+          {
+            "code": "QS304",
+            "name": "Sustainability, Circularity & Life-Cycle Costing",
+            "credits": 20,
+            "description": "BREEAM/LEED financial appraisals, carbon taxation implications, and building end-of-life salvage."
+          },
+          {
+            "code": "QS305",
+            "name": "Ethics & Professional Practice in Quantity Surveying",
+            "credits": 20,
+            "description": "RICS and AIQSL ethical codes, conflict of interest management, and consultancy governance."
+          }
+        ]
+      }
+    ],
+    "entryRequirements": [
+      "Passes in Sri Lankan G.C.E. A/L in any stream (Mathematics, Science, Commerce, Arts, or Technology), OR",
+      "Cambridge or Edexcel International A-Levels, OR",
+      "Approved Diploma in Civil Engineering or Quantity Surveying [Placeholder].",
+      "Credit pass for Mathematics at G.C.E. Ordinary Level is mandatory."
+    ],
+    "careerPathways": [
+      "Professional Consultant Quantity Surveyor",
+      "Commercial Contracts Manager (Contractor side)",
+      "Cost Planning & Value Engineering Specialist",
+      "Contract Claims & Dispute Arbitrator",
+      "Project Financial Controller & Estimator"
+    ],
+    "industrySectors": [
+      "International Construction & Civil Engineering Contractors",
+      "Quantity Surveying & Cost Consulting Practices",
+      "Property Development & Real Estate Investment Trusts",
+      "Government Public Works & Highways Authorities"
+    ],
+    "laboratories": [
+      "BIM 5D Digital Cost Takeoff Suite (CostX / Revit)",
+      "Construction Materials & Concrete Testing Gallery",
+      "Plan Measurement & Architectural Drafting Studio",
+      "Contract Negotiation & Mock Arbitration Chamber"
+    ]
+  }
+];

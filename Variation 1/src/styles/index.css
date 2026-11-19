@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — BIET Heritage Academic Palette (Oxford Navy #002147
+   & Academic Gold #fdc800)
+------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Modern ink neutrals */
+  --color-ink: #111111;
+  --color-ink-deep: #0d0d0d;
+  --color-ink-raised: #141414;
+
+  /* BIET Heritage Academic Palette (archive.org biet.edu.lk) */
+  --color-navy: #002147;
+  --color-navy-deep: #001a39;
+  --color-navy-surface: #07172f;
+  --color-navy-muted: #1a3b61;
+  --color-navy-tint: #f5f8ff;
+
+  /* Brand Yellow / Academic Gold */
+  --color-brand: #fdc800;
+  --color-brand-alt: #ffcc00;
+  --color-brand-hover: #e6b800;
+  --color-brand-soft: #ffe066;
+  --color-brand-text: #634e00;
+
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #20bd5a;
+
+  --ease-liquid: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #fdc800;
+    color: #002147;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Signature surfaces (liquid glass header, yellow CTA, nav underline)
+   Infused with BIET British Oxford Navy (#002147) undertones while
+   strictly preserving transparency, opacities, and liquid transitions.
+------------------------------------------------------------------- */
+.liquid-glass-panel {
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  background: linear-gradient(135deg, #07172fe6 0%, #0c223ed1 50%, #143055e0 100%);
+  border: 1px solid #ffffff26;
+  transition: all 0.35s var(--ease-liquid);
+  box-shadow:
+    0 20px 45px -12px #000c1e80,
+    0 6px 16px -2px #000c1e4d,
+    inset 0 1px 1px #ffffff40,
+    inset 0 -1px 1px #000c1e80;
+}
+.liquid-glass-panel.liquid-glass-scrolled {
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  background: linear-gradient(135deg, #041022f0 0%, #081a33e0 50%, #0f274ceb 100%);
+  border: 1px solid #fff3;
+  box-shadow:
+    0 26px 52px -10px #000a1aa6,
+    0 8px 20px -3px #000c1e66,
+    inset 0 1px 1.5px #ffffff52,
+    inset 0 -1px 1px #000a1a99;
+}
+.liquid-glass-drawer {
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  background: linear-gradient(#07172ff7 0%, #0e254af2 100%);
+  border: 1px solid #ffffff2e;
+  box-shadow:
+    0 26px 54px -12px #000a1aa6,
+    inset 0 1px 1px #ffffff38,
+    inset 0 -1px 2px #000a1a99;
+}
+.liquid-yellow-btn {
+  background: linear-gradient(#ffe066 0%, #fdc800 50%, #e6b800 100%);
+  border: 1px solid #ffffff80;
+  color: #002147;
+  transition:
+    transform 0.25s var(--ease-liquid),
+    box-shadow 0.25s,
+    background 0.25s;
+  box-shadow:
+    0 6px 18px -4px #fdc80080,
+    0 2px 6px -1px #000c1e4d,
+    inset 0 1.5px 1px #ffffffd9,
+    inset 0 -1.5px 1.5px #00214733;
+}
+.liquid-yellow-btn:hover {
+  background: linear-gradient(#fff088 0%, #ffd433 50%, #e6b800 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 9px 26px -3px #fdc800a6,
+    0 3px 8px -1px #000c1e59,
+    inset 0 1.5px 1px #fffffff2,
+    inset 0 -1px 1px #00214733;
+}
+.liquid-yellow-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.nav-link-item {
+  position: relative;
+  transition:
+    color 0.25s,
+    background-color 0.25s,
+    transform 0.25s;
+}
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  border-radius: 9999px;
+  background: #fdc800;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%) scaleX(0);
+  transition:
+    transform 0.25s var(--ease-liquid),
+    opacity 0.25s;
+}
+.nav-link-item:hover::after {
+  opacity: 1;
+  transform: translate(-50%) scaleX(1);
+}
+.nav-link-item.active-link::after {
+  opacity: 1;
+  transform: translate(-50%) scaleX(1);
+  box-shadow: 0 0 8px #fdc80099;
+}
+
+/* Ambient header motion */
+@keyframes navGentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+@keyframes glassSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  15%,
+  45% {
+    opacity: 0.7;
+  }
+  60%,
+  100% {
+    opacity: 0;
+    transform: translateX(350%) skewX(-25deg);
+  }
+}
+.animate-nav-float {
+  animation: navGentleFloat 7s ease-in-out infinite;
+}
+.animate-glass-sweep {
+  animation: glassSweep 10s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-nav-float,
+  .animate-glass-sweep {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
