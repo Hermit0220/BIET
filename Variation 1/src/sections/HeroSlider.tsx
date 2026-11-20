@@ -208,8 +208,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
       id="home"
       aria-label="BIET Institutional Hero Showcase"
       className="relative w-full bg-[#001a39] text-white overflow-hidden min-h-screen h-[100dvh] flex flex-col justify-between select-none pt-28 sm:pt-32 pb-6 sm:pb-8"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
