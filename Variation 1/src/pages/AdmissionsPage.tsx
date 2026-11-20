@@ -26,11 +26,11 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({
         <img
           src={photo('photo-1523240795612-9a054b0db644')}
           alt=""
-          className="w-full h-full object-cover object-center transform scale-105"
+          className="w-full h-full object-cover object-center opacity-60 transform scale-105"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001633]/70 via-[#001633]/40 to-[#001633]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#00142a]/60 via-transparent to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001633]/45 via-[#001633]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/20" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
