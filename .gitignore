@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # Exclude heavy Variation 1 diff screenshots (~140 MB)
 /Variation 1/screenshots/
+
+# Variation 2 lives in its own standalone Git repository
+/Variation 2/

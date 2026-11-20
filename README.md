@@ -1,15 +1,17 @@
-# BIET Campus Website — Variations
+# BIET Campus Website — Variation 1
 
-This repository contains two frontend variations built in React + TypeScript + Vite for the **BIET Campus** website.
+This repository contains **Variation 1** of the **BIET Campus** website built with React, TypeScript, and Vite (`./Variation 1/`).
 
-## Folder Structure
+*(Note: Variation 2 has been moved into its own standalone repository.)*
 
-- **[Variation 1](./Variation%201/)** — BIET Campus website recreation built with React, TypeScript, and Vite using an Oxford Navy (`#002147`) and Academic Gold (`#fdc800`) palette across 16 programmes and 9 routes, with `[plugin:vite:oxc]` duplicate-line JSX/CSS build errors resolved.
-- **[Variation 2](./Variation%202/)** — TCU-inspired editorial edition built with React 19, TypeScript, Vite 8, Tailwind CSS v4, and GSAP (`@gsap/react`) using BIET Campus's yellow (`#FFCC00`), charcoal (`#111111`), and white (`#FFFFFF`) palette, local desktop and portrait Pexels hero videos, 5 priority programmes alongside the reconciled legacy catalogue, a 4-step 3-valued `Find My Path` engine, a reusable `ConsultationForm` with honest delivery states, verified-only `WhatsAppLink`, and a single persistent `ActionBar`.
+## Features
+
+- Oxford Navy (`#002147`) and Academic Gold (`#fdc800`) colour palette
+- 16 programmes across Engineering, Computing, Business, Languages, and Psychology
+- 9 routes (`/`, `/about`, `/programmes`, `/programmes/:programmeId`, `/admissions`, `/student-life`, `/news`, `/contact`, `/find-my-path`)
+- `[plugin:vite:oxc]` duplicate-line JSX/CSS build fixes and Vercel SPA routing (`Variation 1/vercel.json`)
 
 ## Quick Start
-
-### Variation 1
 
 ```powershell
 cd "Variation 1"
@@ -18,19 +20,9 @@ npm run dev
 npm run build
 ```
 
-### Variation 2
+## Deploying to Vercel
 
-```powershell
-cd "Variation 2"
-npm install
-npm run dev
-node scripts/test-variation2.mjs
-npm run build
-```
-
-## Variation 2 Documentation
-
-- [Variation 2/README.md](./Variation%202/README.md) — Setup, dual-base build commands, and environment configuration
-- [Variation 2/CONTENT_DEPENDENCIES.md](./Variation%202/CONTENT_DEPENDENCIES.md) — Content, academic rule, and integration items pending institutional confirmation
-- [Variation 2/MEDIA_MANIFEST.md](./Variation%202/MEDIA_MANIFEST.md) — Local Pexels video and illustrative imagery inventory
-- [Variation 2/QA_REPORT.md](./Variation%202/QA_REPORT.md) — Automated invariant test results, builds, and multi-viewport QA summary
+1. Import `https://github.com/Hermit0220/BIET` in Vercel.
+2. Set **Root Directory** to `Variation 1`.
+3. Keep the detected **Vite** preset (`Build Command`: `npm run build`, `Output Directory`: `dist`).
+4. `Variation 1/vercel.json` handles SPA client-side route rewrites to `/index.html`.
