@@ -179,6 +179,18 @@
 .animate-nav-float {
   animation: navGentleFloat 7s ease-in-out infinite;
 }
+@keyframes cardGentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.animate-card-float {
+  animation: cardGentleFloat 5s ease-in-out infinite;
+}
 .animate-glass-sweep {
   animation: glassSweep 10s ease-in-out infinite;
 }
@@ -193,6 +205,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-nav-float,
+  .animate-card-float,
   .animate-glass-sweep {
     animation: none !important;
   }

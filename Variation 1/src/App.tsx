@@ -8,7 +8,6 @@ import { ApplicationModal } from './components/modals/ApplicationModal';
 import { ProgrammeQuickViewModal } from './components/modals/ProgrammeQuickViewModal';
 import { ProspectusModal } from './components/modals/ProspectusModal';
 import { NewsArticleModal } from './components/modals/NewsArticleModal';
-import { PathwayAdminModal } from './components/modals/PathwayAdminModal';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ProgrammesPage } from './pages/ProgrammesPage';
@@ -27,7 +26,6 @@ function AppShell() {
   const [prospectusOpen, setProspectusOpen] = useState(false);
   const [quickViewProgramme, setQuickViewProgramme] = useState<Programme | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
-  const [adminOpen, setAdminOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -113,7 +111,6 @@ function AppShell() {
               <FindMyPathPage
                 onApplyClick={handleOpenApply}
                 onSelectProgramme={(prog) => setQuickViewProgramme(prog)}
-                onOpenAdmin={() => setAdminOpen(true)}
               />
             }
           />
@@ -141,7 +138,6 @@ function AppShell() {
         onClose={() => setSelectedArticle(null)}
         onApplyClick={() => handleOpenApply('')}
       />
-      <PathwayAdminModal isOpen={adminOpen} onClose={() => setAdminOpen(false)} />
     </div>
   );
 }

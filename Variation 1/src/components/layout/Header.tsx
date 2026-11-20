@@ -68,8 +68,8 @@ export const Header: React.FC<HeaderProps> = ({ onApplyClick }) => {
               to="/"
               className={`flex items-center justify-center shrink-0 bg-white rounded-full shadow-xs focus-visible:outline-2 focus-visible:outline-[#fdc800] focus-visible:outline-offset-4 transition-all duration-300 hover:scale-[1.01] ${
                 scrolled
-                  ? 'pl-3.5 pr-2.5 sm:pl-4 sm:pr-3 py-1 sm:py-1.5'
-                  : 'pl-4 pr-3 sm:pl-5 sm:pr-3.5 py-1.5 sm:py-2'
+                  ? 'pl-2.5 pr-2 sm:pl-4 sm:pr-3 py-1 sm:py-1.5'
+                  : 'pl-3 pr-2.5 sm:pl-5 sm:pr-3.5 py-1 sm:py-2'
               }`}
               aria-label="British Institute of Engineering and Technology (BIET) - Homepage"
             >
@@ -78,8 +78,8 @@ export const Header: React.FC<HeaderProps> = ({ onApplyClick }) => {
                 alt="British Institute of Engineering and Technology (BIET) Official Logo"
                 className={`w-auto object-contain transition-all duration-300 block shrink-0 ${
                   scrolled
-                    ? 'h-7 sm:h-8.5 max-w-[145px] sm:max-w-[190px]'
-                    : 'h-8 sm:h-10 md:h-11 max-w-[165px] sm:max-w-[225px]'
+                    ? 'h-6.5 sm:h-8.5 max-w-[130px] sm:max-w-[190px]'
+                    : 'h-7 sm:h-10 md:h-11 max-w-[140px] sm:max-w-[225px]'
                 }`}
                 style={{ objectFit: 'contain' }}
                 loading="eager"
@@ -135,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({ onApplyClick }) => {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0 relative z-10">
             <Link
               to="/find-my-path"
-              className={`inline-flex items-center gap-1.5 font-bold text-[#fdc800] bg-[#fdc800]/15 hover:bg-[#fdc800]/25 border border-[#fdc800]/40 hover:border-[#fdc800] rounded-full backdrop-blur-md shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap cursor-pointer ${
+              className={`hidden md:inline-flex items-center gap-1.5 font-bold text-[#fdc800] bg-[#fdc800]/15 hover:bg-[#fdc800]/25 border border-[#fdc800]/40 hover:border-[#fdc800] rounded-full backdrop-blur-md shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap cursor-pointer ${
                 scrolled ? 'px-3 py-1.5 text-[11px]' : 'px-3.5 sm:px-4.5 py-2 text-xs'
               }`}
             >
@@ -144,10 +144,10 @@ export const Header: React.FC<HeaderProps> = ({ onApplyClick }) => {
             </Link>
             <button
               onClick={onApplyClick}
-              className={`liquid-yellow-btn relative inline-flex items-center justify-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#002147] rounded-full transition-all duration-300 whitespace-nowrap cursor-pointer group overflow-hidden ${
+              className={`liquid-yellow-btn relative inline-flex items-center justify-center gap-1.5 font-extrabold uppercase tracking-wider text-[#002147] rounded-full transition-all duration-300 whitespace-nowrap cursor-pointer group overflow-hidden ${
                 scrolled
-                  ? 'px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs'
-                  : 'px-4 sm:px-5 py-2 sm:py-2.5'
+                  ? 'px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs'
+                  : 'px-3 sm:px-5 py-1.5 sm:py-2.5 text-[11px] sm:text-xs'
               }`}
             >
               <span

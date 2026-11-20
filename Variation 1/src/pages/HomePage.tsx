@@ -582,9 +582,9 @@ export const HomePage: React.FC<HomePageProps> = ({
         onProspectusClick={onProspectusClick}
       />
       <WelcomeSection />
-      <section className="bg-white py-12 border-b border-neutral-100 relative overflow-hidden">
+      <section className="bg-white py-10 sm:py-14 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#001a39] via-[#002147] to-[#001a39] border border-[#1a3b61]/50 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[#001a39] via-[#002147] to-[#001a39] border border-[#1a3b61]/50 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden animate-card-float hover:-translate-y-1.5 transition-all duration-500 ease-out hover:border-[#fdc800]/60 hover:shadow-[0_24px_48px_-12px_rgba(0,33,71,0.45)] group">
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdc800]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 max-w-2xl space-y-3 text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdc800]/15 text-[#fdc800] text-xs font-extrabold uppercase tracking-wider border border-[#fdc800]/30">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle2,
   AlertTriangle,
@@ -9,14 +10,13 @@ import {
   Award,
   ArrowRight,
   MessageSquare,
-  Settings,
   RefreshCw,
   Check,
   ArrowLeft,
   Send,
 } from 'lucide-react';
 import { TechnicalGraphic } from '../components/ui/SmartImage';
-import { PROGRAMMES, type Programme } from '../data/programmes';
+import type { Programme } from '../data/programmes';
 import { INSTITUTION_INFO } from '../data/site';
 import { photo } from '../lib/assets';
 import {
@@ -198,15 +198,14 @@ const PathwayMatchCard: React.FC<PathwayCardProps> = ({
 
 interface FindMyPathPageProps {
   onApplyClick: (programmeTitle?: string) => void;
-  onSelectProgramme: (programme: Programme) => void;
-  onOpenAdmin: () => void;
+  onSelectProgramme?: (programme: Programme) => void;
+  onOpenAdmin?: () => void;
 }
 
 export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
   onApplyClick,
-  onSelectProgramme,
-  onOpenAdmin,
 }) => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState<PathwayProfile>(INITIAL_PATHWAY_PROFILE);
   const [customSubjectInput, setCustomSubjectInput] = useState('');
@@ -323,8 +322,7 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
   };
 
   const handleViewProgrammeDetails = (id: string) => {
-    const prog = PROGRAMMES.find((p) => p.id === id);
-    if (prog) onSelectProgramme(prog);
+    navigate(`/programmes/${id}`);
   };
 
   return (
@@ -348,16 +346,8 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
                 Explore custom educational pathways into Engineering, Computing, and the Built Environment based on your unique academic qualifications, interests, and career ambitions.
               </p>
             </div>
-            <div className="shrink-0 flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={onOpenAdmin}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white/80 hover:text-white bg-white/5 hover:bg-white/15 border border-white/10 transition-colors cursor-pointer"
-                title="Admin Console to manage course entry rules & view leads"
-              >
-                <Settings className="w-4 h-4 text-[#fdc800]" />
-                Manage Entry Rules (Admin)
-              </button>
-              {step === 4 && (
+            {step === 4 && (
+              <div className="shrink-0 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => setStep(1)}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-[#002147] bg-[#fdc800] hover:bg-[#ffe066] transition-colors cursor-pointer"
@@ -365,8 +355,8 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
                   <RefreshCw className="w-4 h-4" />
                   Start New Search
                 </button>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
@@ -834,20 +824,22 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+            <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-3">
               <button
+                type="button"
                 onClick={() => setStep(2)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 text-white text-xs font-bold transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white text-xs sm:text-sm font-bold transition-colors cursor-pointer shrink-0"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back
+                <span>Back</span>
               </button>
               <button
+                type="button"
                 onClick={handleDiscoverPathways}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#fdc800] to-[#ffe066] text-[#002147] font-extrabold text-xs sm:text-sm shadow-xl shadow-[#fdc800]/25 hover:scale-105 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#fdc800] to-[#ffe066] text-[#002147] font-extrabold text-xs sm:text-sm whitespace-nowrap shadow-xl shadow-[#fdc800]/25 hover:scale-[1.02] transition-all cursor-pointer shrink-0"
               >
-                <Sparkles className="w-4 h-4" />
-                Discover My Matched BIET Pathways
+                <Sparkles className="w-4 h-4 shrink-0" />
+                <span>Discover Pathway</span>
               </button>
             </div>
           </div>
