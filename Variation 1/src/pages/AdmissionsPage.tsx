@@ -8,6 +8,7 @@ import {
   CreditCard,
 } from 'lucide-react';
 import { INSTITUTION_INFO } from '../data/site';
+import { photo } from '../lib/assets';
 
 interface AdmissionsPageProps {
   onApplyClick: () => void;
@@ -19,26 +20,34 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({
   onProspectusClick,
 }) => (
   <div className="bg-white text-[#111111]">
-    <section className="bg-white text-[#111111] py-14 lg:py-20 border-b border-neutral-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden text-white py-16 lg:py-24 border-b border-[#1a3b61]/40 bg-[#001733]">
+      {/* Background Image with Signature BIET Blue Gradient */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <img
+          src={photo('photo-1523240795612-9a054b0db644')}
+          alt=""
+          className="w-full h-full object-cover object-center transform scale-105"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-[#001733]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/85 to-[#001733]/65" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl space-y-4">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#111111]">
-            <Link to="/" className="hover:underline text-neutral-500">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/70">
+            <Link to="/" className="hover:text-white transition-colors text-white/60">
               Home
             </Link>
-            <span aria-hidden="true" className="text-neutral-400">
+            <span aria-hidden="true" className="text-white/40">
               /
             </span>
-            <span className="font-bold">Admissions</span>
+            <span className="font-bold text-white">Admissions</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002147]/10 border border-[#002147]/20 text-xs font-bold uppercase tracking-wider text-[#002147]">
-            <span className="w-2 h-2 rounded-full bg-[#fdc800]" />
-            <span>Admissions 2026 / 2027</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111111] tracking-tight leading-tight text-balance">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight text-balance">
             Admissions & Enrollment
           </h1>
-          <p className="text-base sm:text-lg text-neutral-600 max-w-3xl leading-relaxed">
+          <p className="text-base sm:text-lg text-neutral-200 max-w-3xl leading-relaxed">
             Clear entry criteria, structured intakes, and dedicated guidance for prospective students at BIET Colombo Campus.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -50,9 +59,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({
             </button>
             <button
               onClick={onProspectusClick}
-              className="px-6 py-3.5 text-xs font-semibold text-[#111111] bg-white hover:bg-neutral-50 border border-neutral-300 hover:border-[#002147] rounded-xl transition-colors cursor-pointer flex items-center gap-2"
+              className="px-6 py-3.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-xl transition-colors cursor-pointer flex items-center gap-2"
             >
-              <Download className="w-4 h-4 text-[#002147]" />
+              <Download className="w-4 h-4 text-[#fdc800]" />
               <span>Download Prospectus</span>
             </button>
           </div>

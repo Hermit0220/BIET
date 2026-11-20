@@ -55,8 +55,8 @@ const WelcomeSection: React.FC = () => (
         <div className="lg:col-span-7">
           <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/10] border border-neutral-200 group">
             <SmartImage
-              src={photo('photo-1562774053-701939374585')}
-              alt="BIET institutional campus architecture in Colombo"
+              src={asset('assets/biet-campus-building.webp')}
+              alt="BIET institutional campus building in Colombo"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -65,7 +65,7 @@ const WelcomeSection: React.FC = () => (
                 Colombo Campus
               </span>
               <p className="text-sm font-bold mt-2 text-white">
-                Academic campus and engineering testing laboratories
+                Institute of Engineering and Technology Colombo Campus
               </p>
             </div>
           </div>

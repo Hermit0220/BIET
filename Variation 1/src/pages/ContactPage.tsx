@@ -31,26 +31,34 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="bg-white text-[#111111]">
-      <section className="bg-white text-[#111111] py-14 lg:py-20 border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden text-white py-16 lg:py-24 border-b border-[#1a3b61]/40 bg-[#001733]">
+        {/* Background Image with Signature BIET Blue Gradient */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={photo('photo-1486406146926-c627a92ad1ab')}
+            alt=""
+            className="w-full h-full object-cover object-center transform scale-105"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-[#001733]/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/85 to-[#001733]/65" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl space-y-4">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#111111]">
-              <Link to="/" className="hover:underline text-neutral-500">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/70">
+              <Link to="/" className="hover:text-white transition-colors text-white/60">
                 Home
               </Link>
-              <span aria-hidden="true" className="text-neutral-400">
+              <span aria-hidden="true" className="text-white/40">
                 /
               </span>
-              <span className="font-bold">Contact</span>
+              <span className="font-bold text-white">Contact</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fdc800]/15 border border-[#fdc800]/40 text-xs font-bold uppercase tracking-wider text-[#002147]">
-              <span className="w-2 h-2 rounded-full bg-[#fdc800]" />
-              <span>Colombo Campus</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111111] tracking-tight leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight text-balance">
               Contact Us
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-3xl leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-neutral-200 max-w-3xl leading-relaxed">
               Reach out to our admissions advisors or schedule a campus visit in Colombo, Sri Lanka.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-[#111111]">

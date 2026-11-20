@@ -15,35 +15,43 @@ export const AboutPage: React.FC<AboutPageProps> = ({
   onProspectusClick,
 }) => (
   <div className="bg-white text-[#111111]">
-    <section className="bg-white text-[#111111] py-14 lg:py-20 border-b border-neutral-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#111111] mb-3">
-          <Link to="/" className="hover:underline text-neutral-500">
+    <section className="relative overflow-hidden text-white py-16 lg:py-24 border-b border-[#1a3b61]/40 bg-[#001733]">
+      {/* Background Image with Signature BIET Blue Gradient */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <img
+          src={photo('photo-1541339907198-e08756dedf3f')}
+          alt=""
+          className="w-full h-full object-cover object-center transform scale-105"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-[#001733]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/85 to-[#001733]/65" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/70 mb-3">
+          <Link to="/" className="hover:text-white transition-colors text-white/60">
             Home
           </Link>
-          <span aria-hidden="true" className="text-neutral-400">
+          <span aria-hidden="true" className="text-white/40">
             /
           </span>
-          <span className="font-bold">About BIET</span>
+          <span className="font-bold text-white">About BIET</span>
         </div>
         <div className="max-w-4xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fdc800]/15 border border-[#fdc800]/40 text-xs font-bold uppercase tracking-wider text-[#002147]">
-            <span className="w-2 h-2 rounded-full bg-[#fdc800]" />
-            <span>Higher Education Institution · Sri Lanka</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111111] tracking-tight leading-tight text-balance">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight text-balance">
             Advancing Engineering Excellence
           </h1>
-          <p className="text-base sm:text-lg text-neutral-600 max-w-3xl leading-relaxed">
+          <p className="text-base sm:text-lg text-neutral-200 max-w-3xl leading-relaxed">
             The British Institute of Engineering and Technology (BIET) delivers higher education across engineering, computing, and the built environment with British curricula in Sri Lanka.
           </p>
-          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#111111]">
-            <span className="flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-xl border border-neutral-200 shadow-2xs font-semibold">
-              <Building2 className="w-4 h-4 text-[#002147]" />
+          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs">
+            <span className="flex items-center gap-1.5 bg-[#001a39]/80 backdrop-blur-sm px-3.5 py-2 rounded-xl border border-[#1a3b61]/60 text-white font-semibold">
+              <Building2 className="w-4 h-4 text-[#fdc800]" />
               <span>Colombo Campus, Sri Lanka</span>
             </span>
-            <span className="flex items-center gap-1.5 bg-white px-3.5 py-2 rounded-xl border border-neutral-200 shadow-2xs font-semibold">
-              <Award className="w-4 h-4 text-[#002147]" />
+            <span className="flex items-center gap-1.5 bg-[#001a39]/80 backdrop-blur-sm px-3.5 py-2 rounded-xl border border-[#1a3b61]/60 text-white font-semibold">
+              <Award className="w-4 h-4 text-[#fdc800]" />
               <span>British Curriculum Benchmarks</span>
             </span>
           </div>

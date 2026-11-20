@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, Clock, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
 import { NEWS_ARTICLES, UPCOMING_EVENTS, type NewsArticle } from '../data/site';
 import { SmartImage } from '../components/ui/SmartImage';
+import { photo } from '../lib/assets';
 
 interface NewsPageProps {
   onSelectArticle: (article: NewsArticle) => void;
@@ -39,35 +40,43 @@ export const NewsPage: React.FC<NewsPageProps> = ({
 
   return (
     <div className="bg-white text-[#111111]">
-      <section className="bg-white text-[#111111] py-14 lg:py-20 border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden text-white py-16 lg:py-24 border-b border-[#1a3b61]/40 bg-[#001733]">
+        {/* Background Image with Signature BIET Blue Gradient */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={photo('photo-1517245386807-bb43f82c33c4')}
+            alt=""
+            className="w-full h-full object-cover object-center transform scale-105"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-[#001733]/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/85 to-[#001733]/65" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl space-y-4">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#111111]">
-              <Link to="/" className="hover:underline text-neutral-500">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/70">
+              <Link to="/" className="hover:text-white transition-colors text-white/60">
                 Home
               </Link>
-              <span aria-hidden="true" className="text-neutral-400">
+              <span aria-hidden="true" className="text-white/40">
                 /
               </span>
-              <span className="font-bold">News & Events</span>
+              <span className="font-bold text-white">News & Events</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002147]/10 border border-[#002147]/20 text-xs font-bold uppercase tracking-wider text-[#002147]">
-              <span className="w-2 h-2 rounded-full bg-[#fdc800]" />
-              <span>Campus Updates</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111111] tracking-tight leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight text-balance">
               News & Events
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-3xl leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-neutral-200 max-w-3xl leading-relaxed">
               Stay informed on intake dates, guest lectures, technical symposiums, and institutional announcements at BIET.
             </p>
-            <div className="mt-8 flex items-center gap-2 p-1.5 bg-white border border-neutral-200 rounded-xl w-fit">
+            <div className="mt-8 flex items-center gap-2 p-1.5 bg-[#001a39]/80 backdrop-blur-sm border border-[#1a3b61]/60 rounded-xl w-fit">
               <button
                 onClick={() => setActiveTab('all')}
                 className={`px-4 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
                   activeTab === 'all'
-                    ? 'bg-[#002147] text-white font-bold shadow-xs'
-                    : 'text-neutral-600 hover:text-[#002147] hover:bg-neutral-50'
+                    ? 'bg-[#fdc800] text-[#002147] font-bold shadow-xs'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 All
@@ -76,8 +85,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({
                 onClick={() => setActiveTab('news')}
                 className={`px-4 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
                   activeTab === 'news'
-                    ? 'bg-[#002147] text-white font-bold shadow-xs'
-                    : 'text-neutral-600 hover:text-[#002147] hover:bg-neutral-50'
+                    ? 'bg-[#fdc800] text-[#002147] font-bold shadow-xs'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 News
@@ -86,8 +95,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({
                 onClick={() => setActiveTab('events')}
                 className={`px-4 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
                   activeTab === 'events'
-                    ? 'bg-[#002147] text-white font-bold shadow-xs'
-                    : 'text-neutral-600 hover:text-[#002147] hover:bg-neutral-50'
+                    ? 'bg-[#fdc800] text-[#002147] font-bold shadow-xs'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 Events

@@ -9,7 +9,6 @@ import {
   Award,
   ArrowRight,
   MessageSquare,
-  Compass,
   Settings,
   RefreshCw,
   Check,
@@ -19,6 +18,7 @@ import {
 import { TechnicalGraphic } from '../components/ui/SmartImage';
 import { PROGRAMMES, type Programme } from '../data/programmes';
 import { INSTITUTION_INFO } from '../data/site';
+import { photo } from '../lib/assets';
 import {
   QUALIFICATION_OPTIONS,
   STREAM_OPTIONS,
@@ -331,13 +331,16 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
     <div className="min-h-screen bg-gradient-to-b from-[#001428] via-[#001a39] to-[#001020] text-white pt-20 pb-16">
       <div className="w-full max-w-6xl mx-auto py-6 sm:py-10 px-4 sm:px-6">
         <div className="relative overflow-hidden bg-gradient-to-r from-[#001a39] via-[#002147] to-[#001a39] border border-[#1a3b61]/50 rounded-3xl p-6 sm:p-10 mb-8 shadow-2xl">
+          <img
+            src={photo('photo-1523240795612-9a054b0db644')}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/80 to-[#001733]/60 pointer-events-none" />
           <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-[#fdc800]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#fdc800]/15 text-[#fdc800] text-xs font-extrabold uppercase tracking-wider mb-3 border border-[#fdc800]/30 shadow-xs">
-                <Compass className="w-4 h-4" />
-                BIET Interactive Pathway Discovery
-              </div>
               <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Find Your Academic Path at BIET
               </h1>
