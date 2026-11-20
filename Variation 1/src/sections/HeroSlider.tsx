@@ -255,10 +255,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
             </div>
           );
         })}
-        {/* Layered Oxford Navy Gradients ensuring 100% WCAG AAA Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001a39]/92 via-[#001a39]/70 to-[#002147]/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001a39]/95 via-transparent to-[#001a39]/65 pointer-events-none" />
-        <div className="absolute inset-0 bg-[#001a39]/25 backdrop-blur-[0.5px] pointer-events-none" />
+        {/* Refined subtle overlays: video is vibrant and clearly visible, text contrast remains crisp */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001633]/65 via-[#001633]/30 to-black/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/35 pointer-events-none" />
       </div>
 
       {/* Hero Content Stage (Vertically Centered across Full Screen) */}
