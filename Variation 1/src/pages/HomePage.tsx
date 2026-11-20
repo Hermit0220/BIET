@@ -236,21 +236,8 @@ const FeaturedProgrammesSection: React.FC<{
                       </span>
                     </div>
 
-                    {/* Top-Right Inverted Corner Scoop & Action Button */}
-                    <div className="absolute top-0 right-0 z-10 pointer-events-none select-none">
-                      <svg
-                        className="w-[84px] h-[84px] text-white fill-current block"
-                        viewBox="0 0 84 84"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M84 0 H0 A20 20 0 0 0 20 20 V38 A26 26 0 0 0 46 64 H64 A20 20 0 0 0 84 84 V0 Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </div>
+                    {/* Top-Right Corner Notch: 2 straight edges (1 vertical, 1 horizontal) & 1 rounded curve */}
+                    <div className="absolute top-0 right-0 z-10 w-[64px] h-[64px] bg-white rounded-bl-[28px] pointer-events-none select-none" />
                     <Link
                       to={`/programmes/${prog.id}`}
                       onClick={(e) => e.stopPropagation()}
