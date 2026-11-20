@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
+  ArrowUpRight,
   Compass,
   BookOpen,
   Cpu,
@@ -229,11 +230,35 @@ const FeaturedProgrammesSection: React.FC<{
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute top-3 left-3">
+                    <div className="absolute top-3 left-3 z-10">
                       <span className="px-2.5 py-1 rounded-full bg-[#002147]/85 backdrop-blur-md text-[10px] font-bold text-[#fdc800] uppercase tracking-wider">
                         {prog.qualification.split('/')[0]}
                       </span>
                     </div>
+
+                    {/* Top-Right Inverted Corner Scoop & Action Button */}
+                    <div className="absolute top-0 right-0 z-10 pointer-events-none select-none">
+                      <svg
+                        className="w-[84px] h-[84px] text-white fill-current block"
+                        viewBox="0 0 84 84"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M84 0 H0 A20 20 0 0 0 20 20 V38 A26 26 0 0 0 46 64 H64 A20 20 0 0 0 84 84 V0 Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <Link
+                      to={`/programmes/${prog.id}`}
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label={`View details for ${prog.title}`}
+                      className="absolute top-2 right-2 z-20 w-11 h-11 rounded-full bg-[#171d33] hover:bg-[#fdc800] text-white hover:text-[#002147] flex items-center justify-center transition-all duration-300 shadow-md group/btn hover:scale-105 cursor-pointer"
+                    >
+                      <ArrowUpRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                    </Link>
                   </div>
                   <div className="p-6 space-y-3">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
@@ -254,21 +279,16 @@ const FeaturedProgrammesSection: React.FC<{
                   </div>
                 </div>
                 <div className="p-6 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
-                  <Link
-                    to={`/programmes/${prog.id}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-xs font-bold text-[#002147] hover:underline flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>View Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#fdc800]" />
-                  </Link>
+                  <span className="text-xs font-semibold text-neutral-500">
+                    {prog.duration.split('/')[0].trim()}
+                  </span>
                   <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onApplyForProgramme(prog.title);
                     }}
-                    className="px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-colors cursor-pointer"
+                    className="px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-colors cursor-pointer shadow-xs"
                   >
                     Apply Now
                   </button>
