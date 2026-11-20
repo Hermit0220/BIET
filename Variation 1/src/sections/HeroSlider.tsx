@@ -277,10 +277,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                 aria-hidden={!isCurrent}
               >
                 <div className="space-y-5">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/70 border border-[#fdc800]/40 backdrop-blur-sm text-[11px] font-bold uppercase tracking-wider text-[#fdc800] shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#fdc800] animate-pulse" />
-                    <span>{slide.kicker}</span>
-                  </div>
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] text-balance">
                     {slide.headlinePrefix}
                     <span className="text-[#fdc800]">{slide.headlineHighlight}</span>
