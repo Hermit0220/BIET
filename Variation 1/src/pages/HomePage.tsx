@@ -582,7 +582,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         onProspectusClick={onProspectusClick}
       />
       <WelcomeSection />
-      <section className="bg-[#001428] py-12 border-y border-[#1a3b61]/30 relative overflow-hidden">
+      <section className="bg-white py-12 border-b border-neutral-100 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#001a39] via-[#002147] to-[#001a39] border border-[#1a3b61]/50 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdc800]/10 rounded-full blur-3xl pointer-events-none" />

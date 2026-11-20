@@ -29,8 +29,8 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({
           className="w-full h-full object-cover object-center transform scale-105"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[#001733]/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/85 to-[#001733]/65" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001633]/70 via-[#001633]/40 to-[#001633]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#00142a]/60 via-transparent to-black/25" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

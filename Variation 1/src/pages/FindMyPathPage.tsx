@@ -334,10 +334,10 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
           <img
             src={photo('photo-1523240795612-9a054b0db644')}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#00142a]/95 via-[#002147]/80 to-[#001733]/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001633]/75 via-[#002147]/45 to-[#001733]/25 pointer-events-none" />
           <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-[#fdc800]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
@@ -369,7 +369,7 @@ export const FindMyPathPage: React.FC<FindMyPathPageProps> = ({
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
             <div className="flex items-center justify-between mb-3">
               {[
                 { num: 1, label: 'Qualifications' },
