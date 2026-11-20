@@ -527,8 +527,8 @@ const StartYourJourneyCta: React.FC<{ onApplyClick: () => void }> = ({ onApplyCl
   const posterUrl = photo('photo-1522202176988-66273c2fd55f');
 
   return (
-    <section className="relative overflow-hidden text-white py-24 lg:py-32 border-y border-neutral-900 bg-black">
-      {/* Background Ambient Video - Full Natural Visibility, Zero Blue Tint */}
+    <section className="relative overflow-hidden text-white py-24 lg:py-32 border-y border-[#1a3b61]/40 bg-[#001733]">
+      {/* Background Ambient Video with Blue BIET Gradient */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <video
           ref={videoRef}
@@ -541,13 +541,13 @@ const StartYourJourneyCta: React.FC<{ onApplyClick: () => void }> = ({ onApplyCl
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
-        {/* Subtle neutral dark gradient for contrast without blue color cast */}
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/60" />
+        {/* Blue gradient overlays matching BIET brand palette */}
+        <div className="absolute inset-0 bg-[#001733]/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#00142a]/95 via-[#002147]/65 to-[#001733]/80" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#fdc800]/50 text-xs font-bold uppercase tracking-wider text-[#fdc800] backdrop-blur-sm shadow-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#002147]/80 border border-[#fdc800]/50 text-xs font-bold uppercase tracking-wider text-[#fdc800] backdrop-blur-sm shadow-sm">
           <span>Admissions 2026 / 2027</span>
         </div>
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
