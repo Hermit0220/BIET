@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -7,6 +7,8 @@ import {
   Cpu,
   Briefcase,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { HeroSlider } from '../sections/HeroSlider';
 import { SmartImage } from '../components/ui/SmartImage';
@@ -72,19 +74,81 @@ const WelcomeSection: React.FC = () => (
   </section>
 );
 
+const FEATURED_PROGRAMME_IDS = [
+  'civil-engineering',
+  'mechanical-engineering',
+  'hndme',
+  'hndeee',
+  'software-engineering',
+  'beng-mechanical-mechatronics',
+  'quantity-surveying',
+];
+
 const FeaturedProgrammesSection: React.FC<{
   onSelectProgramme: (p: Programme) => void;
   onApplyForProgramme: (title: string) => void;
 }> = ({ onSelectProgramme, onApplyForProgramme }) => {
-  const featured = PROGRAMMES.slice(0, 4);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const featured = useMemo(() => {
+    return FEATURED_PROGRAMME_IDS.map((id) => PROGRAMMES.find((p) => p.id === id)).filter(
+      (p): p is Programme => Boolean(p)
+    );
+  }, []);
+
+  // Seamless continuous auto-drift from right to left
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animId: number;
+    const scrollSpeed = 0.85; // smooth and readable drift speed
+
+    const step = () => {
+      if (!isPaused && container) {
+        container.scrollLeft += scrollSpeed;
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft -= container.scrollWidth / 2;
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [isPaused]);
+
+  const scrollByAmount = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
+
+  const handleScroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    if (container.scrollLeft >= container.scrollWidth / 2) {
+      container.scrollLeft -= container.scrollWidth / 2;
+    } else if (container.scrollLeft <= 0 && isPaused) {
+      container.scrollLeft += container.scrollWidth / 2;
+    }
+  };
+
+  const displayList = useMemo(() => [...featured, ...featured], [featured]);
 
   return (
     <section
       id="programmes"
-      className="py-24 lg:py-32 bg-white text-[#111111] border-b border-neutral-100"
+      className="py-24 lg:py-32 bg-white text-[#111111] border-b border-neutral-100 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#002147]">
               <span className="w-6 h-0.5 bg-[#fdc800]" />
@@ -98,78 +162,120 @@ const FeaturedProgrammesSection: React.FC<{
               application.
             </p>
           </div>
-          <Link
-            to="/programmes"
-            className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#002147] bg-white hover:bg-[#fdc800]/15 border border-neutral-300 hover:border-[#002147] rounded-full transition-all shadow-xs shrink-0 cursor-pointer"
-          >
-            <Compass className="w-4 h-4 text-[#002147]" />
-            <span>Explore Programmes</span>
-            <ArrowRight className="w-4 h-4 text-[#002147]" />
-          </Link>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => scrollByAmount(-320)}
+                className="p-2.5 rounded-full border border-neutral-200 hover:border-[#002147] hover:bg-[#002147] text-[#002147] hover:text-white transition-colors cursor-pointer shadow-2xs"
+                aria-label="Previous programme cards"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollByAmount(320)}
+                className="p-2.5 rounded-full border border-neutral-200 hover:border-[#002147] hover:bg-[#002147] text-[#002147] hover:text-white transition-colors cursor-pointer shadow-2xs"
+                aria-label="Next programme cards"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+            <Link
+              to="/programmes"
+              className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#002147] bg-white hover:bg-[#fdc800]/15 border border-neutral-300 hover:border-[#002147] rounded-full transition-all shadow-xs shrink-0 cursor-pointer"
+            >
+              <Compass className="w-4 h-4 text-[#002147]" />
+              <span>Explore Programmes</span>
+              <ArrowRight className="w-4 h-4 text-[#002147]" />
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {featured.map((prog) => (
-            <div
-              key={prog.id}
-              onClick={() => onSelectProgramme(prog)}
-              className="bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:border-[#fdc800] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <div className="relative aspect-[16/11] w-full overflow-hidden bg-neutral-100">
-                  <SmartImage
-                    src={prog.imageUrl}
-                    alt={prog.title}
-                    imageSvgType={prog.imageSvgType}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 rounded-full bg-[#002147]/85 backdrop-blur-md text-[10px] font-bold text-[#fdc800] uppercase tracking-wider">
-                      {prog.qualification.split('/')[0]}
+        {/* Sliding Carousel Container with Soft Edge Fades */}
+        <div className="relative w-full">
+          <div
+            className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"
+            aria-hidden="true"
+          />
+
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            className="flex gap-6 lg:gap-8 overflow-x-auto no-scrollbar py-4 select-none"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {displayList.map((prog, idx) => (
+              <div
+                key={`${prog.id}-${idx}`}
+                onClick={() => onSelectProgramme(prog)}
+                className="w-[285px] sm:w-[305px] shrink-0 bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:border-[#fdc800] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between group cursor-pointer"
+              >
+                <div>
+                  <div className="relative aspect-[16/11] w-full overflow-hidden bg-neutral-100">
+                    <SmartImage
+                      src={prog.imageUrl}
+                      alt={prog.title}
+                      imageSvgType={prog.imageSvgType}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-[#002147]/85 backdrop-blur-md text-[10px] font-bold text-[#fdc800] uppercase tracking-wider">
+                        {prog.qualification.split('/')[0]}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
+                      {prog.school.replace('School of ', '')}
                     </span>
+                    <h3 className="text-lg font-bold text-[#111111] group-hover:text-[#002147] leading-snug line-clamp-2">
+                      <Link
+                        to={`/programmes/${prog.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:underline"
+                      >
+                        {prog.title}
+                      </Link>
+                    </h3>
+                    <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">
+                      {prog.overview}
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 space-y-3">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                    {prog.school.replace('School of ', '')}
-                  </span>
-                  <h3 className="text-lg font-bold text-[#111111] group-hover:text-[#002147] leading-snug">
-                    <Link
-                      to={`/programmes/${prog.id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="hover:underline"
-                    >
-                      {prog.title}
-                    </Link>
-                  </h3>
-                  <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">
-                    {prog.overview}
-                  </p>
+                <div className="p-6 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
+                  <Link
+                    to={`/programmes/${prog.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-xs font-bold text-[#002147] hover:underline flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>View Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#fdc800]" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onApplyForProgramme(prog.title);
+                    }}
+                    className="px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-colors cursor-pointer"
+                  >
+                    Apply Now
+                  </button>
                 </div>
               </div>
-              <div className="p-6 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
-                <Link
-                  to={`/programmes/${prog.id}`}
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-xs font-bold text-[#002147] hover:underline flex items-center gap-1 cursor-pointer"
-                >
-                  <span>View Details</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#fdc800]" />
-                </Link>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onApplyForProgramme(prog.title);
-                  }}
-                  className="px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-colors cursor-pointer"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
