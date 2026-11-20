@@ -7,12 +7,14 @@ import {
   Cpu,
   Briefcase,
   Calendar,
+  Play,
+  Pause,
 } from 'lucide-react';
 import { HeroSlider } from '../sections/HeroSlider';
 import { SmartImage } from '../components/ui/SmartImage';
 import { PROGRAMMES, type Programme } from '../data/programmes';
 import { NEWS_ARTICLES, type NewsArticle } from '../data/site';
-import { photo } from '../lib/assets';
+import { photo, asset } from '../lib/assets';
 
 interface HomePageProps {
   onApplyClick: (programmeTitle?: string) => void;
@@ -387,36 +389,103 @@ const LatestNewsSection: React.FC<{ onSelectArticle: (a: NewsArticle) => void }>
   );
 };
 
-const StartYourJourneyCta: React.FC<{ onApplyClick: () => void }> = ({ onApplyClick }) => (
-  <section className="bg-gradient-to-b from-[#001a39] via-[#002147] to-[#001428] text-white py-24 lg:py-32 border-y border-[#1a3b61]/40">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#001a39]/70 border border-[#fdc800]/30 text-xs font-bold uppercase tracking-wider text-[#fdc800]">
-        <span>Admissions 2026 / 2027</span>
+const StartYourJourneyCta: React.FC<{ onApplyClick: () => void }> = ({ onApplyClick }) => {
+  const [isPlaying, setIsPlaying] = React.useState(true);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches && videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, []);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const videoUrl = asset('assets/media/admissions-cta.mp4');
+  const posterUrl = photo('photo-1522202176988-66273c2fd55f');
+
+  return (
+    <section className="relative overflow-hidden text-white py-24 lg:py-32 border-y border-[#1a3b61]/40 bg-[#001a39]">
+      {/* Background Ambient Video with Oxford Navy Overlays */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={posterUrl}
+          className="w-full h-full object-cover object-center transform scale-105"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+        {/* Navy gradient overlays ensuring WCAG AAA legibility */}
+        <div className="absolute inset-0 bg-[#002147]/80 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#001a39]/95 via-[#002147]/85 to-[#001428]/95" />
       </div>
-      <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
-        Start Your Journey in Engineering & Technology.
-      </h2>
-      <p className="text-base sm:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed">
-        Applications are open for 2026/2027 academic intakes at BIET Colombo Campus.
-      </p>
-      <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#001a39]/80 border border-[#fdc800]/40 text-xs font-bold uppercase tracking-wider text-[#fdc800] backdrop-blur-sm shadow-sm">
+          <span>Admissions 2026 / 2027</span>
+        </div>
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] text-balance drop-shadow-sm">
+          Start Your Journey in Engineering & Technology.
+        </h2>
+        <p className="text-base sm:text-lg text-neutral-200 max-w-xl mx-auto leading-relaxed drop-shadow-sm">
+          Applications are open for 2026/2027 academic intakes at BIET Colombo Campus.
+        </p>
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            onClick={onApplyClick}
+            className="w-full sm:w-auto px-9 py-4 text-xs font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-all shadow-lg active:scale-[0.98] cursor-pointer"
+          >
+            Apply Now
+          </button>
+          <Link
+            to="/admissions"
+            className="text-xs font-bold text-white hover:text-[#fdc800] transition-colors flex items-center gap-1.5 py-2 cursor-pointer"
+          >
+            <span>Entry Requirements</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#fdc800]" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Discreet Play/Pause video control */}
+      <div className="absolute bottom-4 right-4 z-20">
         <button
-          onClick={onApplyClick}
-          className="w-full sm:w-auto px-9 py-4 text-xs font-bold uppercase tracking-wider text-[#002147] bg-[#fdc800] hover:bg-[#e6b800] rounded-full transition-all shadow-lg active:scale-[0.98] cursor-pointer"
+          type="button"
+          onClick={togglePlay}
+          aria-label={isPlaying ? 'Pause background video' : 'Play background video'}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#001a39]/80 hover:bg-[#002147] text-neutral-300 hover:text-white border border-[#1a3b61]/60 text-[11px] font-medium backdrop-blur-sm transition-all cursor-pointer shadow-sm"
         >
-          Apply Now
+          {isPlaying ? (
+            <>
+              <Pause className="w-3 h-3 text-[#fdc800]" />
+              <span className="hidden sm:inline">Pause Video</span>
+            </>
+          ) : (
+            <>
+              <Play className="w-3 h-3 text-[#fdc800]" />
+              <span className="hidden sm:inline">Play Video</span>
+            </>
+          )}
         </button>
-        <Link
-          to="/admissions"
-          className="text-xs font-bold text-white hover:text-[#fdc800] transition-colors flex items-center gap-1.5 py-2 cursor-pointer"
-        >
-          <span>Entry Requirements</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#fdc800]" />
-        </Link>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export const HomePage: React.FC<HomePageProps> = ({
   onApplyClick,
