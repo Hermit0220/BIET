@@ -40,8 +40,8 @@ export const Header: React.FC<HeaderProps> = ({ onApplyClick }) => {
 
   return (
     <header
-      className={`sticky z-40 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-out ${
-        scrolled ? 'top-1.5 sm:top-2.5' : 'top-3 sm:top-5'
+      className={`fixed top-0 left-0 right-0 z-40 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-out ${
+        scrolled ? 'pt-1.5 sm:pt-2.5' : 'pt-3 sm:pt-5'
       }`}
     >
       <div className="max-w-7xl mx-auto pointer-events-auto">

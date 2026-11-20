@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Compass, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
-import { photo } from '../lib/assets';
+import { photo, asset } from '../lib/assets';
 
 interface HeroSlideCta {
   label: string;
@@ -16,6 +16,7 @@ interface HeroSlide {
   headlineHighlight: string;
   description: string;
   imageUrl: string;
+  videoUrl?: string;
   imageAlt: string;
   tabLabel: string;
   primaryCta: HeroSlideCta;
@@ -37,6 +38,7 @@ const SLIDES: HeroSlide[] = [
     description:
       'Degree pathways in engineering and technology with British academic benchmarks in Sri Lanka.',
     imageUrl: photo('photo-1541339907198-e08756dedf3f'),
+    videoUrl: asset('assets/media/hero-welcome.mp4'),
     imageAlt: 'BIET university academic campus and lecture quadrangle',
     tabLabel: 'Welcome',
     primaryCta: { label: 'Explore Programmes', type: 'link', to: '/programmes' },
@@ -50,6 +52,7 @@ const SLIDES: HeroSlide[] = [
     description:
       'Practical laboratory training and industry-focused skills for modern engineering.',
     imageUrl: photo('photo-1581092160607-ee22621dd758'),
+    videoUrl: asset('assets/media/hero-engineering.mp4'),
     imageAlt: 'Engineering precision laboratory and prototyping equipment at BIET',
     tabLabel: 'Engineering',
     primaryCta: { label: 'Explore Programmes', type: 'link', to: '/programmes' },
@@ -61,6 +64,7 @@ const SLIDES: HeroSlide[] = [
     headlineHighlight: 'Technology.',
     description: 'Innovative computing and software degree programmes designed for industry.',
     imageUrl: photo('photo-1531482615713-2afd69097998'),
+    videoUrl: asset('assets/media/hero-technology.mp4'),
     imageAlt: 'Students and lecturers collaborating in technology innovation lab',
     tabLabel: 'Technology',
     primaryCta: { label: 'Explore Programmes', type: 'link', to: '/programmes' },
@@ -72,6 +76,7 @@ const SLIDES: HeroSlide[] = [
     headlineHighlight: 'Your Future.',
     description: 'Enrol in undergraduate programmes for the 2026/2027 academic year.',
     imageUrl: photo('photo-1523240795612-9a054b0db644'),
+    videoUrl: asset('assets/media/hero-admissions.mp4'),
     imageAlt: 'University students consulting on admissions and academic pathways',
     tabLabel: 'Admissions',
     primaryCta: { label: 'Apply Now', type: 'apply' },
@@ -85,6 +90,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
   const [progress, setProgress] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % SLIDES.length);
@@ -101,6 +107,26 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
     setProgress(0);
   }, []);
 
+  // Synchronize background video playback with active slide state
+  useEffect(() => {
+    videoRefs.current.forEach((video, idx) => {
+      if (!video) return;
+      if (idx === activeIndex && !paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeIndex, paused]);
+
+  // Respect user reduced-motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      setPaused(true);
+    }
+  }, []);
+
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
@@ -112,7 +138,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
         }
         return next;
       });
-    }, 50);
+    }, 60);
     return () => clearInterval(timer);
   }, [paused, nextSlide]);
 
@@ -181,13 +207,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
     <section
       id="home"
       aria-label="BIET Institutional Hero Showcase"
-      className="relative w-full bg-[#001a39] text-white overflow-hidden min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] flex items-center select-none"
+      className="relative w-full bg-[#001a39] text-white overflow-hidden min-h-screen h-[100dvh] flex flex-col justify-between select-none pt-28 sm:pt-32 pb-6 sm:pb-8"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      {/* 4-Category Video/Image Background Stage */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {SLIDES.map((slide, idx) => {
           const isCurrent = idx === activeIndex;
@@ -195,27 +222,48 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
             <div
               key={slide.id}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isCurrent ? 'opacity-100' : 'opacity-0'
+                isCurrent ? 'opacity-100 z-0' : 'opacity-0 -z-10 pointer-events-none'
               }`}
             >
-              <img
-                src={slide.imageUrl}
-                alt={slide.imageAlt}
-                loading="eager"
-                className={`w-full h-full object-cover object-center transform transition-transform duration-[6000ms] ease-out ${
-                  isCurrent ? 'scale-105' : 'scale-100'
-                }`}
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-              />
+              {slide.videoUrl ? (
+                <video
+                  ref={(el) => {
+                    videoRefs.current[idx] = el;
+                  }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster={slide.imageUrl}
+                  className={`w-full h-full object-cover object-center transform transition-transform duration-[7000ms] ease-out ${
+                    isCurrent ? 'scale-105' : 'scale-100'
+                  }`}
+                >
+                  <source src={slide.videoUrl} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={slide.imageUrl}
+                  alt={slide.imageAlt}
+                  loading="eager"
+                  className={`w-full h-full object-cover object-center transform transition-transform duration-[7000ms] ease-out ${
+                    isCurrent ? 'scale-105' : 'scale-100'
+                  }`}
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+              )}
             </div>
           );
         })}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001a39]/85 via-black/45 to-[#002147]/20 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001a39]/85 via-transparent to-black/35 pointer-events-none" />
+        {/* Layered Oxford Navy Gradients ensuring 100% WCAG AAA Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001a39]/92 via-[#001a39]/70 to-[#002147]/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001a39]/95 via-transparent to-[#001a39]/65 pointer-events-none" />
+        <div className="absolute inset-0 bg-[#001a39]/25 backdrop-blur-[0.5px] pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 sm:py-32 relative z-10 w-full">
-        <div className="relative min-h-[260px] sm:min-h-[280px] flex items-center max-w-3xl">
+      {/* Hero Content Stage (Vertically Centered across Full Screen) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex-1 flex flex-col justify-center my-auto">
+        <div className="relative min-h-[260px] sm:min-h-[300px] flex items-center max-w-3xl">
           {SLIDES.map((slide, idx) => {
             const isCurrent = idx === activeIndex;
             return (
@@ -229,7 +277,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                 aria-hidden={!isCurrent}
               >
                 <div className="space-y-5">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/60 border border-[#fdc800]/40 backdrop-blur-sm text-[11px] font-bold uppercase tracking-wider text-[#fdc800]">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#002147]/70 border border-[#fdc800]/40 backdrop-blur-sm text-[11px] font-bold uppercase tracking-wider text-[#fdc800] shadow-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#fdc800] animate-pulse" />
                     <span>{slide.kicker}</span>
                   </div>
@@ -244,7 +292,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                     {renderCta(slide.primaryCta, true)}
                     <Link
                       to="/find-my-path"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider rounded-full text-white bg-[#002147]/60 hover:bg-[#002147]/90 border border-[#fdc800]/50 hover:border-[#fdc800] backdrop-blur-md transition-all duration-200 shadow-lg cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider rounded-full text-white bg-[#002147]/70 hover:bg-[#002147]/90 border border-[#fdc800]/50 hover:border-[#fdc800] backdrop-blur-md transition-all duration-200 shadow-lg cursor-pointer"
                     >
                       <Compass className="w-4 h-4 text-[#fdc800]" />
                       <span>Find My Path</span>
@@ -256,9 +304,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
             );
           })}
         </div>
+      </div>
 
-        <div className="mt-14 sm:mt-18 pt-6 border-t border-white/15 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 sm:gap-4">
+      {/* Bottom Category Selector & Slide Controls */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full shrink-0">
+        <div className="pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar">
             {SLIDES.map((slide, idx) => {
               const isCurrent = idx === activeIndex;
               return (
@@ -268,9 +319,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                   className={`relative py-1.5 px-3 sm:px-4 rounded-lg text-left transition-all cursor-pointer ${
                     isCurrent
                       ? 'text-white font-bold'
-                      : 'text-white/50 hover:text-white/80 font-medium'
+                      : 'text-white/60 hover:text-white/90 font-medium'
                   }`}
-                  aria-label={`Go to slide ${idx + 1}`}
+                  aria-label={`Go to slide ${idx + 1}: ${slide.tabLabel}`}
                 >
                   <div className="flex items-center gap-2 text-xs">
                     <span
@@ -280,7 +331,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                     </span>
                     <span className="hidden sm:inline text-xs">{slide.tabLabel}</span>
                   </div>
-                  <div className="absolute bottom-0 left-3 right-3 sm:left-4 sm:right-4 h-0.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="absolute bottom-0 left-3 right-3 sm:left-4 sm:right-4 h-0.5 bg-white/15 rounded-full overflow-hidden">
                     {isCurrent && (
                       <div
                         className="h-full bg-[#fdc800] transition-all duration-75 ease-linear"
@@ -297,7 +348,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
             <button
               onClick={() => setPaused((p) => !p)}
               className="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-              aria-label={paused ? 'Resume' : 'Pause'}
+              aria-label={paused ? 'Resume autoplay' : 'Pause autoplay'}
             >
               {paused ? (
                 <Play className="w-3.5 h-3.5 text-[#fdc800]" />
@@ -307,14 +358,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
             </button>
             <button
               onClick={prevSlide}
-              className="p-2.5 rounded-full bg-[#001a39]/60 hover:bg-[#fdc800] text-white hover:text-[#002147] border border-white/20 hover:border-[#fdc800] backdrop-blur-sm transition-all cursor-pointer"
+              className="p-2.5 rounded-full bg-[#001a39]/70 hover:bg-[#fdc800] text-white hover:text-[#002147] border border-white/25 hover:border-[#fdc800] backdrop-blur-sm transition-all cursor-pointer shadow-md"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={nextSlide}
-              className="p-2.5 rounded-full bg-[#001a39]/60 hover:bg-[#fdc800] text-white hover:text-[#002147] border border-white/20 hover:border-[#fdc800] backdrop-blur-sm transition-all cursor-pointer"
+              className="p-2.5 rounded-full bg-[#001a39]/70 hover:bg-[#fdc800] text-white hover:text-[#002147] border border-white/25 hover:border-[#fdc800] backdrop-blur-sm transition-all cursor-pointer shadow-md"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -326,3 +377,4 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
   );
 };
 
+export default HeroSlider;
