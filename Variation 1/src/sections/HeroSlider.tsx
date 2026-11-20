@@ -37,7 +37,7 @@ const SLIDES: HeroSlide[] = [
     headlineHighlight: 'Engineering Futures.',
     description:
       'Degree pathways in engineering and technology with British academic benchmarks in Sri Lanka.',
-    imageUrl: photo('photo-1541339907198-e08756dedf3f'),
+    imageUrl: photo('photo-1562774053-701939374585'),
     videoUrl: asset('assets/media/hero-welcome.mp4'),
     imageAlt: 'BIET university academic campus and lecture quadrangle',
     tabLabel: 'Welcome',
@@ -234,7 +234,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onApplyClick }) => {
                   loop
                   muted
                   playsInline
-                  poster={slide.imageUrl}
+                  preload="auto"
                   className={`w-full h-full object-cover object-center transform transition-transform duration-[7000ms] ease-out ${
                     isCurrent ? 'scale-105' : 'scale-100'
                   }`}
